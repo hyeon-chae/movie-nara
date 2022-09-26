@@ -2,6 +2,7 @@ import api from './Api'
 import {useState, useEffect} from 'react';
 
 
+
 const Home = () => {
         // const [loading, setLoading] = useState(true);
         const [movies, setMovies] = useState([]);
@@ -28,6 +29,7 @@ const Home = () => {
                                         <p>{movie.title}</p>
                                 </div>
                         ))}
+                                    
                        
                 </div>
         )

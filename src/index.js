@@ -1,8 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './style/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import './style/index.scss';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+// import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+// import { Swiper, SwiperSlide } from 'swiper/react';
+
+// SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+// Swiper.use([Swiper, SwiperSlide]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
