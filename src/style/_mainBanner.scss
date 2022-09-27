@@ -1,0 +1,30 @@
+@import './mixin.scss';
+
+// main banner
+.mainSwiper{
+  width: 100%;
+  .swiper-slide{
+    img{
+      width: 100%;
+      display: block;
+    }
+    .info{
+      position: absolute;
+      bottom: 20%;
+      right: 0;
+      .title{
+        @include title02;
+        color: #fff
+      }
+      .overview{
+        @include body02;
+        @include text-wrap-ellipsis-three;
+        max-width: 600px;
+        color: #fff
+      }
+    }
+  }
+  .swiper-pagination-bullet{
+    background: #fff !important;
+  }
+}

@@ -4,12 +4,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import './style/index.scss';
+// import './style/mixin.scss';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+
 
 // import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 // import { Swiper, SwiperSlide } from 'swiper/react';
@@ -23,6 +25,7 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

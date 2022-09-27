@@ -1,56 +1,60 @@
 // mobile font style
 @mixin title01 {
-  font-weight: bold;
-  font-size: 48px;
-  line-height: 54px;
+  // font-weight: bold;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 64px;
 }
 
 @mixin title02 {
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 40px;
+  // font-weight: bold;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
 }
 
 @mixin title03 {
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 32px;
+  // font-weight: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
 }
 
 @mixin title04 {
   font-weight: 500;
+  font-size: 26px;
+  line-height: 32px;
+}
+
+@mixin subTitle {
+  // font-weight: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+@mixin body01 {
+  font-weight: 700;
   font-size: 20px;
   line-height: 28px;
 }
 
-@mixin subTitle {
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 26px;
-}
-
-@mixin body01 {
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 24px;
-}
-
 @mixin body02 {
   font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 @mixin body03 {
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-}
-
-@mixin moBtn {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+}
+
+@mixin button {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 // text 길때 줄임
@@ -70,6 +74,22 @@
   word-wrap: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* ellipsis line */
+  -webkit-box-orient: vertical;
+  /* webkit 엔진을 사용하지 않는 브라우저를 위한 속성. */
+  /* height = line-height * line = 1.2em * 3 = 3.6em  */
+  // white-space: normal;
+  line-height: 1.2em;
+  height: auto;
+}
+
+// text 세줄로 줄임
+@mixin text-wrap-ellipsis-three {
+  // width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* ellipsis line */
   -webkit-box-orient: vertical;
   /* webkit 엔진을 사용하지 않는 브라우저를 위한 속성. */
   /* height = line-height * line = 1.2em * 3 = 3.6em  */

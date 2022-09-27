@@ -1,0 +1,23 @@
+@import './mixin.scss';
+
+.nav-area{
+  background: #0000004d;
+  padding: 12px 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  .menu-warp{
+    @include space-between-center;
+  }
+  .logo{
+    font-size: 22px;
+    font-weight: bold;
+  }
+  a{
+    color: #fff;
+    margin-right: 15px;
+    font-size: 16px;
+  }
+}

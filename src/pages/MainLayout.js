@@ -11,8 +11,8 @@ const MainLayout = () => {
         <Nav />
         <Routes>
           <Route path='/' element={<Home />}></Route>
-          <Route path='/movie' element={<Movies />}></Route>
-          <Route path='/program' element={<Programs />}></Route>
+          <Route path='/movies' element={<Movies />}></Route>
+          <Route path='/shows' element={<Programs />}></Route>
         </Routes>
       </Router>
     </div>
