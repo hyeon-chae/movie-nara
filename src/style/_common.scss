@@ -19,19 +19,19 @@ body {
   -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #292929;
+  color: #fff;
 }
 
 li, ol{
   font-family: "-apple-system","BlinkMacSystemFont","helvetica","Apple SD Gothic Neo",sans-serif;
   list-style: none;
-  color: #292929;
+  color: #fff;
 }
 
 a{
   font-family: "-apple-system","BlinkMacSystemFont","helvetica","Apple SD Gothic Neo", sans-serif;
   text-decoration: none;
-  color: #292929;
+  color: #fff;
   display: inline-block;
 }
 
@@ -41,7 +41,7 @@ button{
   border: none;
   background: none;
   vertical-align: middle;
-  color: #292929;
+  color: #fff;
   &:focus {
       outline:0;
   }
@@ -58,12 +58,12 @@ textarea{
   border: none;
   resize: none;
   font-size: 14px;
-  color: #292929;
+  color: #fff;
 }
 
 input {
   font-family: "-apple-system","BlinkMacSystemFont","helvetica","Apple SD Gothic Neo", sans-serif;
-  color: #292929;
+  color: #fff;
   appearance: none;
   -webkit-appearance: none;
   -webkit-border-radius: 0;
@@ -101,13 +101,13 @@ input {
 
 input:active, input:focus, textarea:active, textarea:focus, select:active, select:focus {
   outline: none;
-  color: #292929;
+  color: #fff;
 }
 
 select {
   font-family: "-apple-system","BlinkMacSystemFont","helvetica","Apple SD Gothic Neo", sans-serif;
   border: none;
-  color: #292929;
+  color: #fff;
 }
 
 // margin

@@ -1,8 +1,10 @@
 @import './mixin.scss';
 
 .nav-area{
-  background: #0000004d;
-  padding: 12px 0px;
+  // background: #0000004d;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  padding: 22px 50px;
+  box-sizing: border-box;
   position: absolute;
   top: 0;
   left: 0;
@@ -16,7 +18,6 @@
     font-weight: bold;
   }
   a{
-    color: #fff;
     margin-right: 15px;
     font-size: 16px;
   }
