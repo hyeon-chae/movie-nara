@@ -1,6 +1,6 @@
 const Movie = () => {
   return (
-   <div className="">Movie</div>
+   <div className="center">Movie 화면 준비 중...</div>
   )
 }
 

@@ -1,13 +1,14 @@
 import {useState, useEffect} from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Scrollbar, A11y} from 'swiper';
+import PropTypes from 'prop-types'
 
 import BasicItem from './BasicItem'
 
 const BasicList = (props) => {
   const [currentTab, setCurrentTab] = useState(0);
   const tabMenuList = [
-    {menu:'Movie', value: 'movies'}, 
+    {menu:'Movie', value: 'movie'}, 
     {menu:'TV Shows', value: 'tv'}
   ]
 
@@ -23,7 +24,8 @@ const BasicList = (props) => {
   return (
     <div className="basic-list">
       <div className="list-title-area">
-        <p className="list-title">What's Popular</p>
+        <p className="list-title">{ props.listTitle }</p>
+        {props.activeTabMenu ? (
         <ul className="tab-menu-area">
           {tabMenuList.map((item, i) =>(
             <li 
@@ -34,25 +36,33 @@ const BasicList = (props) => {
                 {item.menu}
             </li>
           ))}
-        </ul>
+        </ul>) : ''
+         }
       </div>
       <Swiper
       modules={[Navigation, Scrollbar, A11y]}
-      slidesPerView={6.5}
+      slidesPerView={6.2}
       spaceBetween={10}
       className="BasicListSwiper"
       scrollbar={{
         hide: true,
       }}
       >
-      {props.popularList.map((item, inx) => (
+      {props.list.map((item, inx) => (
         <SwiperSlide key={item.id}>
-          <BasicItem item={item} inx={inx}></BasicItem>
+          <BasicItem 
+            item={item} 
+            inx={inx} 
+            currentTab={currentTab}
+            label={props.label}
+            />
         </SwiperSlide>
       ))}
       </Swiper>
     </div>
   )
 }
-
+BasicList.prototype = {
+  props: PropTypes.object.isRequired,
+}
 export default BasicList;

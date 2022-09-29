@@ -9,10 +9,10 @@ const MainBanner = ({trandingAll}) => {
     loop={true}
     slidesPerView={1}
     pagination={{ clickable: true }}
-    // autoplay={{
-    //   delay: 2500,
-    //   disableOnInteraction: false,
-    // }}
+    autoplay={{
+      delay: 2500,
+      disableOnInteraction: false,
+    }}
     className="mainSwiper"
     >
       {/* <SwiperSlide></SwiperSlide> */}

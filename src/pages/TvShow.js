@@ -1,6 +1,6 @@
 const TvShow = () => {
   return (
-   <div className="">TvShow</div>
+   <div className="center">TvShow 화면 준비 중...</div>
   )
 }
 

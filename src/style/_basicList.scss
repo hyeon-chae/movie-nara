@@ -1,10 +1,9 @@
 @import './mixin.scss';
 
 .basic-list{
-  padding-bottom: 30px;
   box-sizing: border-box;
   .list-title-area{
-    padding: 50px 0 30px 50px;
+    padding: 30px 0 10px 50px;
     @include flex-start-center;
     .list-title{
       @include title04;
@@ -33,7 +32,7 @@
     padding-right: 50px !important;
   }
   .swiper-wrapper{
-    padding-bottom: 30px !important;
+    padding: 20px 0 30px !important;
   }
   .swiper-scrollbar{
     background: #ffffff33 !important;

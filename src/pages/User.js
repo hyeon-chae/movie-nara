@@ -1,6 +1,6 @@
 const User = () => {
   return (
-   <div className="">user 화면 준비중 </div>
+   <div className="center">user 화면 준비중...</div>
   )
 }
 

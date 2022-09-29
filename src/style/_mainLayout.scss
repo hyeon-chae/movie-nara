@@ -1,4 +1,14 @@
+@import './mixin.scss';
+
 .main-layout{
   position: relative;
   background: #000;
+}
+.center{
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  @include title02;
+  color: #999;
 }
