@@ -1,0 +1,95 @@
+@import './mixin.scss';
+
+.detail-area{
+  .main-img-area{
+    position: relative;
+    .background{
+      background: #1f200ad6;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .detail-main-img{
+      // position: fixed;
+      // top: 0;
+      // left: 0;
+      width: 100%;
+      display: block;
+    }
+    .mian-info-area{
+      @include flex-start-center;
+      padding: 70px 50px 30px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      box-sizing: border-box;
+      .poster-area{
+        width: 30%;
+        img{
+          width: 100%;
+        }
+      }
+      .info-area{
+        width: calc(100% - 30% - 20px);
+        margin-left: 20px;
+        .info-title{
+          @include title02;
+        }
+        .genres{
+          @include flex-start-center;
+          font-size: 12px;
+          margin-bottom: 30px;
+          li{
+            margin: 6px 10px 0 0;
+            background: #ffffffcc;
+            color: #333;
+            padding:2px 6px;
+            border-radius: 4px
+          }
+        }
+        .tagline{
+          @include subTitle;
+          font-style: italic;
+          color: #bbb;
+          margin:30px 0 10px;
+        }
+        .overview{
+          @include body04;
+        }
+        .createdby{
+          @include body03;
+          margin-top:30px;
+          font-style: italic;
+        }
+      }
+    }
+  }
+  .credits-area{
+    padding: 50px 0 30px 50px;
+    .cast-title{
+      @include title04;
+      padding-bottom: 20px;
+    }
+    .cast-area{
+      @include flex-start-start;
+      overflow-x: scroll;
+      padding-bottom: 30px;
+      .cast-item{
+        min-width: 138px;
+        margin-right: 20px;
+        img{
+          width: 100%;
+          display: block;
+          border-radius: 8px;
+        }
+        .name{
+          margin-top: 6px;
+        }
+      }
+    }
+  }
+}

@@ -1,36 +1,35 @@
 import {useState, useEffect} from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Scrollbar, A11y} from 'swiper';
-import PropTypes from 'prop-types'
 
-import BasicItem from './BasicItem'
+import VideoItem from './VideoItem';
 
-const BasicList = (props) => {
+const MovieList = (props) => {
   const [currentTab, setCurrentTab] = useState(0);
   const tabMenuList = [
     {menu:'Movie', value: 'movie'}, 
     {menu:'TV Shows', value: 'tv'}
   ]
-
+  
   const selectMenuHandler = (str, val, index) => {
     setCurrentTab(index);
     props.getTabMenu(str, val)
   };
-  
+
   useEffect(() => { 
 
   }, [])
 
   return (
-    <div className="basic-list">
-      <div className="list-title-area">
-        <p className="list-title">{ props.listTitle }</p>
-        {props.activeTabMenu ? (
+   <div className="video-list">
+     <div className="list-title-area">
+    <p className="list-title">{ props.listTitle }</p>
+    {props.activeTabMenu ? (
         <ul className="tab-menu-area">
           {tabMenuList.map((item, i) =>(
             <li 
               key={i}
-              onClick={() => selectMenuHandler('popular', item.value, i)}
+              onClick={() => selectMenuHandler('video', item.value, i)}
               className={ currentTab === i ? 'tab-menu active' : 'tab-menu' }
               >
                 {item.menu}
@@ -39,18 +38,18 @@ const BasicList = (props) => {
         </ul>) : ''
          }
       </div>
-      <Swiper
+    <Swiper
       modules={[Navigation, Scrollbar, A11y]}
-      slidesPerView={6.2}
-      spaceBetween={10}
-      className="BasicListSwiper"
+      slidesPerView={3.2}
+      spaceBetween={20}
+      className="videoListSwiper"
       scrollbar={{
         hide: true,
       }}
       >
-      {props.list.map((item, inx) => (
+      {props.list.slice(0, 10).map((item, inx) => (
         <SwiperSlide key={item.id}>
-          <BasicItem 
+          <VideoItem 
             item={item} 
             inx={inx} 
             tabMenu={props.tabMenu}
@@ -60,10 +59,8 @@ const BasicList = (props) => {
         </SwiperSlide>
       ))}
       </Swiper>
-    </div>
+   </div>
   )
 }
-BasicList.prototype = {
-  props: PropTypes.object.isRequired,
-}
-export default BasicList;
+
+export default MovieList;

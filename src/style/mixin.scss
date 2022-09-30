@@ -1,33 +1,35 @@
 // mobile font style
 @mixin title01 {
-  // font-weight: bold;
   font-weight: 700;
   font-size: 56px;
   line-height: 64px;
 }
 
 @mixin title02 {
-  // font-weight: bold;
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 48px;
+}
+
+@mixin title03 {
   font-weight: 700;
   font-size: 40px;
   line-height: 48px;
 }
 
-@mixin title03 {
-  // font-weight: normal;
+@mixin title04 {
   font-weight: 400;
   font-size: 28px;
   line-height: 36px;
 }
 
-@mixin title04 {
+@mixin title05 {
   font-weight: 400;
   font-size: 26px;
   line-height: 32px;
 }
 
 @mixin subTitle {
-  // font-weight: normal;
   font-weight: 400;
   font-size: 22px;
   line-height: 30px;

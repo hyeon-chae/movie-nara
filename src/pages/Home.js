@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 
 import MainBanner from '../components/MainBanner'
 import BasicList from '../components/BasicList'
+import VideoList from '../components/VideoList'
 
 
 const Home = () => {
@@ -10,7 +11,9 @@ const Home = () => {
         // main banner
         const [trandingAll, setTrandingAll] =  useState([]);
         const [popularList, setPopularList] = useState([]);
-        const [onTheAirList, setonTheAirList] = useState([]);
+        const [onTheAirList, setOnTheAirList] = useState([]);
+        const [upcomingList, setUpcomingList] = useState([]);
+
         const [tabMenu, setTabMenu] = useState('movie');
 
         const getTrandingAll = async () => {
@@ -34,20 +37,33 @@ const Home = () => {
         const getOnTheAir = async () => {
                 const { data } = await api.get('tv/on_the_air');
                 if(data){
-                        setonTheAirList(data.results);
+                        setOnTheAirList(data.results);
                 }
+                setLoading(false);
         }
 
-        const getTabMenu = (e) => {
-                setTabMenu(e);
-                getPopularList(e);
+        const getUpcomingList = async (val) => {
+                const { data } = await api.get(val + '/upcoming');
+                if(data){
+                        setUpcomingList(data.results);
+                }
+                setLoading(false);
+        }
+
+        const getTabMenu = (str, val) => {
+                setTabMenu(val);
+                if(str === 'popular'){
+                        getPopularList(val);
+                }else if(str === 'video'){
+                        getUpcomingList(val);
+                }
         }
 
         useEffect(() => {
                 getTrandingAll();
                 getPopularList('movie');
                 getOnTheAir();
-                // console.log( trandingAll);
+                getUpcomingList('movie');
         }, [])
 
         return (
@@ -57,9 +73,9 @@ const Home = () => {
                         {loading ? <strong>Loading...</strong> : (
                         <BasicList 
                                 list={popularList} 
+                                activeTabMenu={true}
                                 tabMenu={tabMenu} 
                                 getTabMenu={getTabMenu}
-                                activeTabMenu={true}
                                 listTitle={`What's Popular`}
                                 label={true}
                         ></BasicList>    
@@ -68,13 +84,22 @@ const Home = () => {
                         {loading ? <strong>Loading...</strong> : (
                         <BasicList 
                                 list={onTheAirList} 
-                                tabMenu={tabMenu} 
-                                getTabMenu={getTabMenu}
                                 activeTabMenu={false}
+                                tabMenu={'tv'} 
+                                getTabMenu={getTabMenu}
                                 listTitle={'TV on The Air'}
                         ></BasicList>    
-                        )}                              
-                                                 
+                        )}       
+                        
+                        {loading ? <strong>Loading...</strong> : (
+                        <VideoList
+                                list={upcomingList}
+                                activeTabMenu={false}
+                                tabMenu={tabMenu} 
+                                getTabMenu={getTabMenu}
+                                listTitle={'Upcoming'}
+                        ></VideoList>                       
+                        )}                        
                 </div>
         )
 }

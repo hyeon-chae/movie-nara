@@ -16,7 +16,7 @@ const MainLayout = () => {
           <Route path='/movies' element={<Movies />}></Route>
           <Route path='/shows' element={<TvShow />}></Route>
           <Route path='/user' element={<User />}></Route>
-          <Route path='/detail/:id' element={<DetailPage />}></Route>
+          <Route path='/detail/:param/:id' element={<DetailPage />}></Route>
         </Routes>
       </Router>
     </div>

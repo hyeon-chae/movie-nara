@@ -20,6 +20,7 @@
     .title-area{
       @include body02;
       @include text-ellipsis;
+      margin-top: 6px
     }
   }
   &.popular{

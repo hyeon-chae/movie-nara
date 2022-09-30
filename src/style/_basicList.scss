@@ -1,6 +1,6 @@
 @import './mixin.scss';
 
-.basic-list{
+.basic-list, .video-list{
   box-sizing: border-box;
   .list-title-area{
     padding: 30px 0 10px 50px;
@@ -38,4 +38,7 @@
     background: #ffffff33 !important;
     // background: rgb(255 255 255 / 20%) !important;
   }
+}
+.video-list{
+  background: #343434;
 }
