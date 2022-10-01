@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react';
 import MainBanner from '../components/MainBanner'
 import BasicList from '../components/BasicList'
 import VideoList from '../components/VideoList'
+import VideoModal from '../components/modal/VideoModal';
 
 
 const Home = () => {
@@ -13,9 +14,17 @@ const Home = () => {
         const [popularList, setPopularList] = useState([]);
         const [onTheAirList, setOnTheAirList] = useState([]);
         const [upcomingList, setUpcomingList] = useState([]);
+        const [movieId, setMovieId] = useState('');
 
+        const [showVideoModal, setShowVideoModal] = useState(false);
         const [tabMenu, setTabMenu] = useState('movie');
 
+        const isShowModal = (boolean, id) => {
+                setShowVideoModal(boolean);
+                setMovieId(id);
+
+        }
+            
         const getTrandingAll = async () => {
                 const { data } = await api.get('trending/all/week');
                 if(data){
@@ -98,8 +107,26 @@ const Home = () => {
                                 tabMenu={tabMenu} 
                                 getTabMenu={getTabMenu}
                                 listTitle={'Upcoming'}
+                                isShowModal={isShowModal}
                         ></VideoList>                       
-                        )}                        
+                        )}       
+
+                        {loading ? <strong>Loading...</strong> : (
+                        <BasicList 
+                                list={popularList} 
+                                activeTabMenu={true}
+                                tabMenu={tabMenu} 
+                                getTabMenu={getTabMenu}
+                                listTitle={`What's Popular`}
+                                label={true}
+                        ></BasicList>    
+                        )}         
+
+                        {showVideoModal && 
+                        <VideoModal 
+                        isShowModal={isShowModal}
+                        movieId={movieId}
+                        ></VideoModal>}        
                 </div>
         )
 }

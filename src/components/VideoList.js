@@ -16,8 +16,11 @@ const MovieList = (props) => {
     props.getTabMenu(str, val)
   };
 
+  const showModal = (boolean, id) => {
+    props.isShowModal(boolean, id);
+    console.log(id);
+  }
   useEffect(() => { 
-
   }, [])
 
   return (
@@ -41,20 +44,24 @@ const MovieList = (props) => {
     <Swiper
       modules={[Navigation, Scrollbar, A11y]}
       slidesPerView={3.2}
-      spaceBetween={20}
+      spaceBetween={10}
       className="videoListSwiper"
       scrollbar={{
         hide: true,
       }}
       >
       {props.list.slice(0, 10).map((item, inx) => (
-        <SwiperSlide key={item.id}>
+        <SwiperSlide 
+          onClick={() => showModal(true, item.id)}
+          key={item.id}
+        >
           <VideoItem 
             item={item} 
             inx={inx} 
             tabMenu={props.tabMenu}
             currentTab={currentTab}
             label={props.label}
+           
             />
         </SwiperSlide>
       ))}

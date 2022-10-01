@@ -1,0 +1,15 @@
+@import './mixin.scss';
+
+.video-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+  .background{
+    background: rgba(0, 0, 0, 0.552);
+    width: 100%;
+    height: 100%;
+  }
+}
