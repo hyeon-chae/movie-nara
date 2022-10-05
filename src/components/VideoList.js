@@ -18,7 +18,6 @@ const MovieList = (props) => {
 
   const showModal = (boolean, id) => {
     props.isShowModal(boolean, id);
-    console.log(id);
   }
   useEffect(() => { 
   }, [])

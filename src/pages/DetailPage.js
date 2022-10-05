@@ -8,7 +8,7 @@ const DetailPage = () => {
 
   const [loading, setLoading] = useState(true);
   const [detail, setDetail] = useState({});
-  const [creditsCast, setCreditsCast] = useState({});
+  const [creditsCast, setCreditsCast] = useState([]);
   const { param, id } = useParams();
 
   const getDetail = async () => {
@@ -22,18 +22,8 @@ const DetailPage = () => {
   const getcredits = async () => {
     const { data } = await api.get(`${param}/${id}/credits`)
     if(data){
-      // let cast = [];
-      // if(Array.isArray(data.cast)){
-      //   setCreditsCast(data.cast);
-      // }
-      // else{
-      //   for(let obj in data.cast){
-      //     // cast.push(data.cast[obj])
-      //     setCreditsCast().push(data.cast[obj]);
-      //   }
-      // }
       setCreditsCast(data.cast);
-      // console.log(data.cast);
+      // console.log(data.cast, creditsCast);
     }
     setLoading(false);
   }

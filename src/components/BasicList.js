@@ -12,9 +12,9 @@ const BasicList = (props) => {
     {menu:'TV Shows', value: 'tv'}
   ]
 
-  const selectMenuHandler = (str, val, index) => {
+  const selectMenuHandler = (val, index) => {
     setCurrentTab(index);
-    props.getTabMenu(str, val)
+    props.getTabMenu(props.listTitle, val)
   };
   
   useEffect(() => { 
@@ -30,7 +30,7 @@ const BasicList = (props) => {
           {tabMenuList.map((item, i) =>(
             <li 
               key={i}
-              onClick={() => selectMenuHandler('popular', item.value, i)}
+              onClick={() => selectMenuHandler(item.value, i)}
               className={ currentTab === i ? 'tab-menu active' : 'tab-menu' }
               >
                 {item.menu}

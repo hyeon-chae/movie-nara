@@ -14,6 +14,7 @@ const Home = () => {
         const [popularList, setPopularList] = useState([]);
         const [onTheAirList, setOnTheAirList] = useState([]);
         const [upcomingList, setUpcomingList] = useState([]);
+        const [topRatedList, setTopRatedList] = useState([]);
         const [movieId, setMovieId] = useState('');
 
         const [showVideoModal, setShowVideoModal] = useState(false);
@@ -22,7 +23,7 @@ const Home = () => {
         const isShowModal = (boolean, id) => {
                 setShowVideoModal(boolean);
                 setMovieId(id);
-
+                // console.log(boolean, id);
         }
             
         const getTrandingAll = async () => {
@@ -59,12 +60,20 @@ const Home = () => {
                 setLoading(false);
         }
 
-        const getTabMenu = (str, val) => {
+        const getTopRatedList = async (val) => {
+                const { data } = await api.get(val + '/top_rated');
+                if(data){
+                        setTopRatedList(data.results);
+                }
+                setLoading(false);
+        }
+
+        const getTabMenu = (title, val) => {
                 setTabMenu(val);
-                if(str === 'popular'){
+                if(title === `What's Popular`){
                         getPopularList(val);
-                }else if(str === 'video'){
-                        getUpcomingList(val);
+                }else if(title === 'Top Rated'){
+                        getTopRatedList(val);
                 }
         }
 
@@ -73,6 +82,7 @@ const Home = () => {
                 getPopularList('movie');
                 getOnTheAir();
                 getUpcomingList('movie');
+                getTopRatedList('movie');
         }, [])
 
         return (
@@ -106,27 +116,27 @@ const Home = () => {
                                 activeTabMenu={false}
                                 tabMenu={tabMenu} 
                                 getTabMenu={getTabMenu}
-                                listTitle={'Upcoming'}
+                                listTitle={'Upcoming | official trailer'}
                                 isShowModal={isShowModal}
                         ></VideoList>                       
                         )}       
 
                         {loading ? <strong>Loading...</strong> : (
                         <BasicList 
-                                list={popularList} 
+                                list={topRatedList} 
                                 activeTabMenu={true}
                                 tabMenu={tabMenu} 
                                 getTabMenu={getTabMenu}
-                                listTitle={`What's Popular`}
+                                listTitle={`Top Rated`}
                                 label={true}
                         ></BasicList>    
                         )}         
 
-                        {showVideoModal && 
+                        {showVideoModal ? ( 
                         <VideoModal 
-                        isShowModal={isShowModal}
-                        movieId={movieId}
-                        ></VideoModal>}        
+                                isShowModal={isShowModal}
+                                movieId={movieId}
+                        ></VideoModal>) : ''}        
                 </div>
         )
 }
