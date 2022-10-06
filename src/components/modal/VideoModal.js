@@ -24,7 +24,7 @@ const VideoModal = (props) => {
   }, [])
 
   return (
-   <div className="video-modal">
+   <div className="video-modal modal">
       <div className="background" onClick={() => props.isShowModal(false)}></div>
       {loading ? <strong>Loading...</strong> : (
       <div className="modal-contents">

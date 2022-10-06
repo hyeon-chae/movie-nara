@@ -16,9 +16,6 @@ const MovieList = (props) => {
     props.getTabMenu(str, val)
   };
 
-  const showModal = (boolean, id) => {
-    props.isShowModal(boolean, id);
-  }
   useEffect(() => { 
   }, [])
 
@@ -51,7 +48,7 @@ const MovieList = (props) => {
       >
       {props.list.slice(0, 10).map((item, inx) => (
         <SwiperSlide 
-          onClick={() => showModal(true, item.id)}
+          onClick={() => props.isShowModal(true, item.id)}
           key={item.id}
         >
           <VideoItem 

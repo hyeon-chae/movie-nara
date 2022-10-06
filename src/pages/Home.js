@@ -6,7 +6,6 @@ import BasicList from '../components/BasicList'
 import VideoList from '../components/VideoList'
 import VideoModal from '../components/modal/VideoModal';
 
-
 const Home = () => {
         const [loading, setLoading] = useState(true);
         // main banner
@@ -18,6 +17,7 @@ const Home = () => {
         const [movieId, setMovieId] = useState('');
 
         const [showVideoModal, setShowVideoModal] = useState(false);
+
         const [tabMenu, setTabMenu] = useState('movie');
 
         const isShowModal = (boolean, id) => {
@@ -137,6 +137,7 @@ const Home = () => {
                                 isShowModal={isShowModal}
                                 movieId={movieId}
                         ></VideoModal>) : ''}        
+                        
                 </div>
         )
 }

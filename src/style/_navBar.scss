@@ -13,12 +13,22 @@
   .menu-warp{
     @include space-between-center;
   }
-  .logo{
-    font-size: 22px;
-    font-weight: bold;
+  .menu-area{
+    .logo{
+      font-size: 22px;
+      font-weight: bold;
+    }
+    a{
+      margin-right: 15px;
+      font-size: 16px;
+    }
   }
-  a{
-    margin-right: 15px;
-    font-size: 16px;
+  .user-area{
+    .icon{
+      padding: 0 12px;
+    }
+  }
+  &.active-search-modal{
+    background: #000000cc;
   }
 }
