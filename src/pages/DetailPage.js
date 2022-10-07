@@ -52,7 +52,7 @@ const DetailPage = () => {
               {detail.original_title || detail.original_name} ({moment(detail.release_date).format('YYYY')})
             </p>
             <ul className="genres">
-              {detail.genres.map((item) => (
+              {detail.genres?.map((item) => (
                 <li  key={item.id}>{item.name}</li>
               ))}
             </ul>
@@ -74,7 +74,7 @@ const DetailPage = () => {
       <div className="credits-area">
         <div className="cast-title">Cast</div>
         <ul className="cast-area">
-          {creditsCast.slice(0, 10).map((item) => (
+          {creditsCast?.slice(0, 10).map((item) => (
             <li 
             className="cast-item"
             key={item.id}>

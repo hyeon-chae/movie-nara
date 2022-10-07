@@ -29,7 +29,7 @@ const MainSearchModal = (props) => {
             onKeyPress={props.handleOnKeyPress}
           />
           <FontAwesomeIcon 
-            onClick={() => props.handleSearch(props.searchKeyword)}
+            onClick={() => props.handleSearch()}
             icon={faMagnifyingGlass} className="search-icon"/>
         </div>
       </div>
