@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
@@ -7,6 +7,27 @@ const MainSearchModal = (props) => {
   // const getSerchKeyword = (keyword) => {
   //   setSerchKeyword(keyword)
   // }
+  const navigate = useNavigate();
+
+  const [searchKeyword, setSearchKeyword] = useState('');
+
+  const onChangeKeyword = (e) => setSearchKeyword(e.target.value);
+  const handleSearch = () => {
+    if(searchKeyword === ''){
+      return; 
+    }else{
+      setSearchKeyword('');    
+      props.isShowSearchModal(false)
+      navigate(`/search/${searchKeyword}`, { replace: true })
+    }
+    
+  }
+  const handleOnKeyPress = e => {
+     // Enter 입력이 되면 클릭 이벤트 실행
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
   useEffect(() => {})
   return (
@@ -22,14 +43,15 @@ const MainSearchModal = (props) => {
         </p>
         <div className="input-area">
           <input 
-            onChange={props.onChangeKeyword}
-            value={props.searchKeyword}
+            onChange={onChangeKeyword}
+            value={searchKeyword}
             type="text" 
             placeholder="Search by movies, TV shows, people, and more."
-            onKeyPress={props.handleOnKeyPress}
+            onKeyPress={handleOnKeyPress}
           />
           <FontAwesomeIcon 
-            onClick={() => props.handleSearch()}
+            // onClick={() => navigate('/search', { replace: true })}
+            onClick={() => handleSearch()}
             icon={faMagnifyingGlass} className="search-icon"/>
         </div>
       </div>
