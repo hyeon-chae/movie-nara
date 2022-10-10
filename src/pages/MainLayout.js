@@ -9,6 +9,7 @@ import User from './User'
 import DetailPage from './DetailPage'
 import SearchPage from './SearchPage'
 import MainSearchModal from '../components/modal/MainSearchModal';
+import Footer from '../components/Footer'
 
 const MainLayout = () => {
   const [showSearchModal, setShowSearchModal] = useState(false)
@@ -47,7 +48,7 @@ const MainLayout = () => {
           isShowSearchModal={isShowSearchModal}
         ></MainSearchModal>) : ''}
       </Router>
-
+      <Footer />
     </div>
   )
 }
