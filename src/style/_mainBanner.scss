@@ -1,0 +1,39 @@
+@import './mixin.scss';
+
+// main banner
+.mainSwiper{
+  width: 100%;
+  margin-bottom: 30px;
+  .swiper-slide{
+    img{
+      width: 100%;
+      display: block;
+    }
+    .info{
+      position: absolute;
+      bottom: 18%;
+      left: 50px;
+      .title{
+        @include title03;
+        text-shadow: 1px 2px 10px #292929;
+      }
+      .overview{
+        @include body02;
+        @include text-wrap-ellipsis-three;
+        max-width: 600px;
+        text-shadow: 1px 1px 3px #292929;
+      }
+    }
+    .bottom-style{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 70px;
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0),  rgba(0, 0, 0, 0.8));
+
+    }
+  }
+  .swiper-pagination-bullet{
+    background: #fff !important;
+  }
+}

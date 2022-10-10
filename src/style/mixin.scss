@@ -1,0 +1,262 @@
+// mobile font style
+@mixin title01 {
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 64px;
+}
+
+@mixin title02 {
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 48px;
+}
+
+@mixin title03 {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+@mixin title04 {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+@mixin title05 {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 32px;
+}
+
+@mixin subTitle {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+@mixin body01 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@mixin body02 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@mixin body03 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@mixin body04 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@mixin button {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+// text 길때 줄임
+// text 한줄 줄임
+@mixin text-ellipsis {
+  vertical-align: middle;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+// text 두줄로 줄임
+@mixin text-wrap-ellipsis {
+  // width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* ellipsis line */
+  -webkit-box-orient: vertical;
+  /* webkit 엔진을 사용하지 않는 브라우저를 위한 속성. */
+  /* height = line-height * line = 1.2em * 3 = 3.6em  */
+  // white-space: normal;
+  line-height: 1.2em;
+  height: auto;
+}
+
+// text 세줄로 줄임
+@mixin text-wrap-ellipsis-three {
+  // width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* ellipsis line */
+  -webkit-box-orient: vertical;
+  /* webkit 엔진을 사용하지 않는 브라우저를 위한 속성. */
+  /* height = line-height * line = 1.2em * 3 = 3.6em  */
+  // white-space: normal;
+  line-height: 1.2em;
+  height: auto;
+}
+
+// flex
+@mixin space-around-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@mixin space-around-start {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+@mixin space-between-start {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+@mixin space-between-end {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+@mixin space-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin flex-start-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+@mixin flex-start-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+@mixin flex-start-end {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+@mixin flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flex-end-start {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+@mixin flex-end-center {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+@mixin flex-col-center-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+@mixin flex-col-start-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+@mixin flex-col-start-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+@mixin flex-col-center-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin warp-start-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+@mixin warp-start-start {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: start;
+}
+@mixin warp-center-center {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+@mixin warp-space-between-start {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+@mixin warp-space-between-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// button style
+// button font style component에서 button 태그에 include
+@mixin mainBtnStyle {
+  border-radius: 4px;
+  background: #ff7500;
+  padding: 12px 16px;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+@mixin mainOutlineBtnStyle {
+  border-radius: 4px;
+  border: 1px solid #ff7500;
+  padding: 11px 16px;
+  color: #ff7500;
+  box-sizing: border-box;
+}
+
+@mixin mainBtnStyleDisabled {
+  border-radius: 4px;
+  background: #ededed;
+  padding: 12px 16px;
+  color: #ccc;
+  box-sizing: border-box;
+}
+
+@mixin mainOutlineBtnStyleDisabled {
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 11px 16px;
+  color: #ccc;
+  box-sizing: border-box;
+}
+
+@mixin btnDisabled {
+  border-radius: 4px;
+  background: #ededed;
+  padding: 6px 16px;
+  color: #ccc;
+  box-sizing: border-box;
+  border: none;
+}

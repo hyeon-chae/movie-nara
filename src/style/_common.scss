@@ -1,0 +1,190 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "-apple-system","BlinkMacSystemFont","helvetica","Apple SD Gothic Neo",sans-serif;
+  -webkit-text-size-adjust:none;
+  -ms-text-size-adjust: none;
+
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+}
+
+li, ol{
+  font-family: "-apple-system","BlinkMacSystemFont","helvetica","Apple SD Gothic Neo",sans-serif;
+  list-style: none;
+  color: #fff;
+}
+
+a{
+  font-family: "-apple-system","BlinkMacSystemFont","helvetica","Apple SD Gothic Neo", sans-serif;
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+}
+
+button{
+  font-family: "-apple-system","BlinkMacSystemFont","helvetica","Apple SD Gothic Neo", sans-serif;
+  cursor: pointer;
+  border: none;
+  background: none;
+  vertical-align: middle;
+  color: #fff;
+  &:focus {
+      outline:0;
+  }
+}
+
+img{
+  display: inline-block;
+  background: none;
+  border: none;
+}
+
+textarea{
+  font-family: "-apple-system","BlinkMacSystemFont","helvetica","Apple SD Gothic Neo", sans-serif;
+  border: none;
+  resize: none;
+  font-size: 14px;
+  color: #fff;
+}
+
+input {
+  font-family: "-apple-system","BlinkMacSystemFont","helvetica","Apple SD Gothic Neo", sans-serif;
+  color: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+
+  // input type search
+  &[type='search'] {
+    /* clears the ‘X’ from Internet Explorer */
+    &::-ms-clear,
+    &::-ms-reveal {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    /* clears the ‘X’ from Chrome */
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+  }
+  &[type='date'] {
+    background: #fff;
+    width: 100%;
+    min-height: 44px;
+    // background: url(@/assets/icon/arrow-down-small-B.svg) no-repeat 95% 50%;
+    &::-webkit-background {
+      display: none;
+    }
+    &::-webkit-calendar-picker-indicator {
+      background: transparent;
+    }
+  }
+}
+
+input:active, input:focus, textarea:active, textarea:focus, select:active, select:focus {
+  outline: none;
+  color: #fff;
+}
+
+select {
+  font-family: "-apple-system","BlinkMacSystemFont","helvetica","Apple SD Gothic Neo", sans-serif;
+  border: none;
+  color: #fff;
+}
+
+// margin
+@for $i from 0 through 100 {
+  .mg-#{$i} {
+    margin: 1px * $i !important;
+  }
+  .mg-t-#{$i} {
+    margin-top: 1px * $i !important;
+  }
+  .mg-b-#{$i} {
+    margin-bottom: 1px * $i !important;
+  }
+  .mg-r-#{$i} {
+    margin-right: 1px * $i !important;
+  }
+  .mg-l-#{$i} {
+    margin-left: 1px * $i !important;
+  }
+}
+
+// padding
+@for $i from 0 through 100 {
+  .pd-#{$i} {
+    padding: 1px * $i !important;
+  }
+  .pd-t-#{$i} {
+    padding-top: 1px * $i !important;
+  }
+  .pd-b-#{$i} {
+    padding-bottom: 1px * $i !important;
+  }
+  .pd-r-#{$i} {
+    padding-right: 1px * $i !important;
+  }
+  .pd-l-#{$i} {
+    padding-left: 1px * $i !important;
+  }
+}
+// width
+@for $i from 1 through 100 {
+  .width-#{$i} {
+    width: $i * 1% !important;
+  }
+}
+
+// icon
+@for $i from 1 through 100 {
+  .icon-#{$i} {
+    width: $i * 1px !important;
+    height: $i * 1px !important;
+    display: block;
+    // background: #eee;
+  }
+}
+@for $i from 1 through 100 {
+  .border-bottom-#{$i} {
+    border-bottom: $i * 1px solid #ededed;
+  }
+}
+
+//align
+.text-center{
+  text-align: center;
+}
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+.text-justify{
+  text-align: justify ;
+}
+
+
+// z-index
+.modal{
+  z-index: 1000;
+}

@@ -1,16 +1,13 @@
 
 import React from 'react';
 // import { Routes, Route, Link } from 'react-router-dom';
-// import './App.css';
 
-import Home from './pages/Home'
-import Nav from './pages/Nav'
+import MainLayout from './pages/MainLayout';
 
 function App() {
   return (
     <div className="App">
-      <Nav />
-      <Home/>
+      <MainLayout />
     </div>
   );
 }
