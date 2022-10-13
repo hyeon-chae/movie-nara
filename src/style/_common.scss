@@ -191,9 +191,17 @@ select {
 
 .footer-area{
   padding: 40px 0 50px;
-  margin: 50px 50px 0;
+  // margin: 50px 50px 0;
   text-align: center;
   color: #999;
   font-size: 14px;
   border-top: 1px solid #333;
+  background: #000;
+  // position: absolute;
+  // bottom: 0;
+  // width: 100%;
+}
+
+.app{
+  position: relative;
 }

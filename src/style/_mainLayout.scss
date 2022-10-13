@@ -5,10 +5,16 @@
   background: #000;
 }
 .center{
-  position: fixed;
-  top: 35%;
-  left: 50%;
-  transform: translateX(-50%);
+  // position: fixed;
+  // top: 35%;
+  // left: 50%;
+  // transform: translateX(-50%);
   @include title03;
   color: #999;
+  padding: 200px 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 200px;
+  height: calc(100vh - 200px);
+  text-align: center;
 }
