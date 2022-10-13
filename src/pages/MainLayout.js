@@ -1,5 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 
 import NavBar from '../components/NavBar'
@@ -10,29 +9,10 @@ import User from './User'
 import DetailPage from './DetailPage'
 import SearchPage from './SearchPage'
 import MainSearchModal from '../components/modal/MainSearchModal';
+import Footer from '../components/Footer'
 
 const MainLayout = () => {
-  // const navigate = useNavigate();
   const [showSearchModal, setShowSearchModal] = useState(false)
-
-  const [searchKeyword, setSearchKeyword] = useState('');
-
-  const onChangeKeyword = (e) => setSearchKeyword(e.target.value);
-  const handleSearch = () => {
-    if(searchKeyword === ''){
-      return; 
-    }
-    // console.log(keyword);
-    setSearchKeyword('');    
-    // navigate('/search', {replace: true});
-    
-  }
-  const handleOnKeyPress = e => {
-     // Enter 입력이 되면 클릭 이벤트 실행
-    if (e.key === 'Enter') {
-      handleSearch();
-    }
-  };
 
   const isShowSearchModal = (boolean) => {
     setShowSearchModal(boolean)
@@ -60,18 +40,15 @@ const MainLayout = () => {
           <Route path='/shows' element={<TvShow />}></Route>
           <Route path='/user' element={<User />}></Route>
           <Route path='/detail/:param/:id' element={<DetailPage />}></Route>
-          <Route path='/search' element={<SearchPage searchKeyword={searchKeyword}/>}></Route>
+          <Route path='/search/:param' element={<SearchPage />}></Route>
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
+        {showSearchModal ? ( 
+        <MainSearchModal
+          isShowSearchModal={isShowSearchModal}
+        ></MainSearchModal>) : ''}
       </Router>
-
-      {showSearchModal ? ( 
-      <MainSearchModal
-        isShowSearchModal={isShowSearchModal}
-        onChangeKeyword={onChangeKeyword}
-        handleOnKeyPress={handleOnKeyPress}
-        handleSearch={handleSearch}
-        searchKeyword={searchKeyword}
-      ></MainSearchModal>) : ''}
+      <Footer />
     </div>
   )
 }
