@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
@@ -10,6 +11,7 @@ const MainSearchModal = (props) => {
   const navigate = useNavigate();
 
   const [searchKeyword, setSearchKeyword] = useState('');
+  let [searchParams, setSearchParams] = useSearchParams();
 
   const onChangeKeyword = (e) => setSearchKeyword(e.target.value);
   const handleSearch = () => {
@@ -18,7 +20,12 @@ const MainSearchModal = (props) => {
     }else{
       setSearchKeyword('');    
       props.isShowSearchModal(false)
-      navigate(`/search/${searchKeyword}`, { replace: true })
+      setSearchParams(searchKeyword)
+      navigate(`/search`, { replace: true })
+      // navigate({
+      //   pathname: '/search',
+      //   search: searchParams,
+      // })
     }
     
   }

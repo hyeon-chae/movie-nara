@@ -12,6 +12,7 @@ import MainSearchModal from '../components/modal/MainSearchModal';
 
 const MainLayout = () => {
   const [showSearchModal, setShowSearchModal] = useState(false)
+  // const [searchKeyword, setSearchKeyword] = useState('');
 
   const isShowSearchModal = (boolean) => {
     setShowSearchModal(boolean)
@@ -39,12 +40,14 @@ const MainLayout = () => {
           <Route path='/shows' element={<TvShow />}></Route>
           <Route path='/user' element={<User />}></Route>
           <Route path='/detail/:param/:id' element={<DetailPage />}></Route>
-          <Route path='/search/:param' element={<SearchPage />}></Route>
+          <Route path='/search' element={<SearchPage />}></Route>
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
         {showSearchModal ? ( 
         <MainSearchModal
           isShowSearchModal={isShowSearchModal}
+          // searchKeyword={searchKeyword}
+          // setSearchKeyword={setSearchKeyword}
         ></MainSearchModal>) : ''}
       </Router>
      

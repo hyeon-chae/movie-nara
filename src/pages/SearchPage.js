@@ -1,14 +1,19 @@
 
 import api from '../Api'
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
+// import { useSearchParams } from "react-router-dom";
 import BasicList from '../components/BasicList'
 
-
-const SearchPage = () => {
-  const { param } = useParams();
-
+const SearchPage = (props) => {
+  // const { param } = useParams();
+  // const [searchParams] = useSearchParams('');
   const [loading, setLoading] = useState(true);
+
+  // const param = searchParams;
+  // const param = searchParams.get('searchKeyword');
+
+  console.log(props);
 
   const [searchResultsTotal, setSearchResultsTotal] = useState([])
   const [searchResultsMovie, setSearchResultsMovie] = useState([])
@@ -18,7 +23,7 @@ const SearchPage = () => {
 
 
   const search = async () => {
-    const { data } = await api.get('search/multi', {params:{ query: param} });
+    const { data } = await api.get('search/multi', {params:{ query: props.searchParams} });
    
     if(data){
       console.log(data);
@@ -37,7 +42,7 @@ const SearchPage = () => {
   return (
    <div className="search-page">
     <div className="search-result">
-    A total of {totalResults} results for your <span className="keyword"> " {param} " </span> search
+    A total of {totalResults} results for your <span className="keyword"> " {props.searchParams} " </span> search
     </div>
      {loading ? <strong>Loading...</strong> : (
         <BasicList 
