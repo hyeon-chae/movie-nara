@@ -2,7 +2,7 @@ import moment from 'moment';
 
 
 const Footer = () => {
-  const updated = '2022-10-10'
+  const updated = '2022-10-11'
   return (
    <div className="footer-area">
     Copyright CHAE HYEON all rights reserved. Last Updated {moment(updated).format('YYYY.MM.DD')}

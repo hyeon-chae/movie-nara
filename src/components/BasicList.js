@@ -27,7 +27,7 @@ const BasicList = (props) => {
         <p className="list-title">{ props.listTitle }</p>
         {props.activeTabMenu ? (
         <ul className="tab-menu-area">
-          {tabMenuList.map((item, i) =>(
+          {tabMenuList?.map((item, i) =>(
             <li 
               key={i}
               onClick={() => selectMenuHandler(item.value, i)}

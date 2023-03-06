@@ -1,12 +1,13 @@
 
 import api from '../Api'
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 import BasicList from '../components/BasicList'
 
 
-const SearchPage = () => {
-  const { param } = useParams();
+const SearchPage = ( props ) => {
+  // const { param } = useParams();
+  console.log(props.searchKeyword);
 
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +19,7 @@ const SearchPage = () => {
 
 
   const search = async () => {
-    const { data } = await api.get('search/multi', {params:{ query: param} });
+    const { data } = await api.get('search/multi', {params:{ query: props.searchKeyword} });
    
     if(data){
       console.log(data);
@@ -27,7 +28,10 @@ const SearchPage = () => {
       setSearchResultsMovie(data.results.filter(el => el.media_type === 'movie'));
       setSearchResultsTv(data.results.filter(el => el.media_type === 'tv'));
       setSearchResultsPerson(data.results.filter(el => el.media_type === 'person'));
-      setLoading(false)
+      setLoading(false);
+      // console.log('movie', searchResultsMovie);
+      // console.log('tv', searchResultsTv);
+      // console.log('person', setSearchResultsPerson(data.results.filter(el => el.media_type === 'person')));
     }
   }
   useEffect(() => {
@@ -37,7 +41,7 @@ const SearchPage = () => {
   return (
    <div className="search-page">
     <div className="search-result">
-    A total of {totalResults} results for your <span className="keyword"> " {param} " </span> search
+    A total of <span className='total-results'>{totalResults}</span> results for your <span className="keyword"> " {props.searchKeyword} " </span> search
     </div>
      {loading ? <strong>Loading...</strong> : (
         <BasicList 
