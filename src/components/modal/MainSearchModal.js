@@ -9,16 +9,16 @@ const MainSearchModal = (props) => {
   // }
   const navigate = useNavigate();
 
-  const [searchKeyword, setSearchKeyword] = useState('');
+  // const [searchKeyword, setSearchKeyword] = useState('');
 
-  const onChangeKeyword = (e) => setSearchKeyword(e.target.value);
+  const onChangeKeyword = (e) => props.setSearchKeyword(e.target.value);
   const handleSearch = () => {
-    if(searchKeyword === ''){
+    if(props.searchKeyword === ''){
       return; 
     }else{
-      setSearchKeyword('');    
+      props.setSearchKeyword('');    
       props.isShowSearchModal(false)
-      navigate(`/search/${searchKeyword}`, { replace: true })
+      navigate('/search', { replace: true })
     }
     
   }
@@ -44,7 +44,7 @@ const MainSearchModal = (props) => {
         <div className="input-area">
           <input 
             onChange={onChangeKeyword}
-            value={searchKeyword}
+            value={props.searchKeyword}
             type="text" 
             placeholder="Search by movies, TV shows, people, and more."
             onKeyPress={handleOnKeyPress}

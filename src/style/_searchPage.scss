@@ -8,5 +8,8 @@
     .keyword{
       @include title04;
     }
+    .total-results{
+      @include subTitle;
+    }
   }
 }

@@ -17,6 +17,9 @@ const MainLayout = () => {
     setShowSearchModal(boolean)
   }
 
+  const [searchKeyword, setSearchKeyword] = useState('');
+  console.log('1', searchKeyword);
+
   const noScroll = () => {
     showSearchModal ? 
     document.body.style.overflowY = 'hidden' : document.body.style.overflowY = 'scroll';
@@ -39,12 +42,14 @@ const MainLayout = () => {
           <Route path='/shows' element={<TvShow />}></Route>
           <Route path='/user' element={<User />}></Route>
           <Route path='/detail/:param/:id' element={<DetailPage />}></Route>
-          <Route path='/search/:param' element={<SearchPage />}></Route>
+          <Route path='/search' element={<SearchPage searchKeyword={searchKeyword}/>}></Route>
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
         {showSearchModal ? ( 
         <MainSearchModal
           isShowSearchModal={isShowSearchModal}
+          setSearchKeyword={setSearchKeyword}
+          searchKeyword={searchKeyword}
         ></MainSearchModal>) : ''}
       </Router>
      
