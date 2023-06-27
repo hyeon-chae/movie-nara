@@ -9,7 +9,6 @@ const MainSearchModal = (props) => {
   const [searchKeyword, setSearchKeyword] = useState('');
 
   const onSearchKeyword = () => {
-    console.log(searchKeyword);
     if(searchKeyword === ''){
       return; 
     }else{
@@ -19,10 +18,11 @@ const MainSearchModal = (props) => {
     }
     
   }
-  const handleOnKeyPress = e => {
+  const handleOnKeyPress = (e) => {
      // Enter 입력이 되면 클릭 이벤트 실행
     if (e.key === 'Enter') {
-      props.handleSearchKeyword(searchKeyword);      
+      console.log('enter');
+      onSearchKeyword();      
     }
   };
 
@@ -40,9 +40,9 @@ const MainSearchModal = (props) => {
         </p>
         <div className="input-area">
           <input 
-            onChange={(e) => setSearchKeyword(e.target.value)}
             type="text" 
             placeholder="Search by movies, TV shows, people, and more."
+            onChange={(e) => setSearchKeyword(e.target.value)}
             onKeyPress={handleOnKeyPress}
           />
           <FontAwesomeIcon 

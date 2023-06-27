@@ -12,12 +12,11 @@ import MainSearchModal from '../components/modal/MainSearchModal';
 
 const MainLayout = () => {
   const [showSearchModal, setShowSearchModal] = useState(false)
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const isShowSearchModal = (boolean) => {
     setShowSearchModal(boolean)
   }
-
-  const [searchKeyword, setSearchKeyword] = useState('');
   
   const handleSearchKeyword = (val) => {
     setSearchKeyword(val);

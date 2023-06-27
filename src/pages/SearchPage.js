@@ -6,9 +6,6 @@ import BasicList from '../components/BasicList'
 
 
 const SearchPage = ( props ) => {
-  // const { param } = useParams();
-  // console.log(props.searchKeyword);
-
   const [loading, setLoading] = useState(true);
 
   const [searchResultsTotal, setSearchResultsTotal] = useState([])
@@ -20,7 +17,6 @@ const SearchPage = ( props ) => {
 
   const search = async () => {
     const { data } = await api.get('search/multi', {params:{ query: props.searchKeyword} });
-   
     if(data){
       setSearchResultsTotal(data.results)
       setTotalResults(data.total_results)
@@ -28,9 +24,6 @@ const SearchPage = ( props ) => {
       setSearchResultsTv(data.results.filter(el => el.media_type === 'tv'));
       setSearchResultsPerson(data.results.filter(el => el.media_type === 'person'));
       setLoading(false);
-      // console.log('movie', searchResultsMovie);
-      // console.log('tv', searchResultsTv);
-      // console.log('person', setSearchResultsPerson(data.results.filter(el => el.media_type === 'person')));
     }
   }
   useEffect(() => {
