@@ -75,29 +75,12 @@
 }
 
 // text 두줄로 줄임
-@mixin text-wrap-ellipsis {
-  // width: 100%;
+@mixin text-wrap-ellipsis ($line) {
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* ellipsis line */
-  -webkit-box-orient: vertical;
-  /* webkit 엔진을 사용하지 않는 브라우저를 위한 속성. */
-  /* height = line-height * line = 1.2em * 3 = 3.6em  */
-  // white-space: normal;
-  line-height: 1.2em;
-  height: auto;
-}
-
-// text 세줄로 줄임
-@mixin text-wrap-ellipsis-three {
-  // width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* ellipsis line */
+  -webkit-line-clamp: $line; /* ellipsis line */
   -webkit-box-orient: vertical;
   /* webkit 엔진을 사용하지 않는 브라우저를 위한 속성. */
   /* height = line-height * line = 1.2em * 3 = 3.6em  */
@@ -107,114 +90,26 @@
 }
 
 // flex
-@mixin space-around-center {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+@mixin flex-box ($direction, $align, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
 }
-@mixin space-around-start {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
+@mixin flex-box-wrap ($direction, $align, $justify) {
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
 }
-@mixin space-between-start {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-@mixin space-between-end {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-@mixin space-between-center {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-@mixin flex-start-start {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-@mixin flex-start-center {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-@mixin flex-start-end {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-}
-@mixin flex-center-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@mixin flex-end-start {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-}
-@mixin flex-end-center {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-@mixin flex-col-center-start {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-@mixin flex-col-start-start {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-@mixin flex-col-start-end {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-}
-@mixin flex-col-center-center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-@mixin warp-start-center {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-}
-@mixin warp-start-start {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: start;
-}
-@mixin warp-center-center {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-@mixin warp-space-between-start {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-@mixin warp-space-between-center {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+
+// position
+@mixin position-center ($position) {
+  position: $position;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 // button style

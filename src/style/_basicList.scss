@@ -4,13 +4,13 @@
   box-sizing: border-box;
   .list-title-area{
     padding: 30px 0 10px 50px;
-    @include flex-start-center;
+   @include flex-box(row, center, start);;
     .list-title{
       @include title04;
       margin-right: 50px;
     }
     .tab-menu-area{
-      @include space-between-center;
+     @include flex-box(row, center, space-between);;
       border: 1px solid #fff;
       border-radius:20px;
       box-sizing:border-box;

@@ -19,7 +19,7 @@
       display: block;
     }
     .mian-info-area{
-      @include flex-start-center;
+     @include flex-box(row, center, start);;
       padding: 70px 50px 30px;
       position: absolute;
       top: 50%;
@@ -40,7 +40,7 @@
           @include title02;
         }
         .genres{
-          @include flex-start-center;
+         @include flex-box(row, center, start);;
           font-size: 12px;
           margin-bottom: 30px;
           li{
@@ -75,7 +75,7 @@
       padding-bottom: 20px;
     }
     .cast-area{
-      @include flex-start-start;
+     @include flex-box(row, start, start);;
       overflow-x: scroll;
       padding-bottom: 30px;
       .cast-item{

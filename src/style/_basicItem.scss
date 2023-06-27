@@ -1,7 +1,7 @@
 @import './mixin.scss';
 
 .basic-item{
-  @include flex-col-start-start;
+ @include flex-box(col, start, start);;
   &:hover{
     transition: .4s;
     transform: translateY(-15px);

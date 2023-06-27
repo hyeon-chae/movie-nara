@@ -28,33 +28,33 @@ const MainSearchModal = (props) => {
 
   useEffect(() => {})
   return (
-   <div className="main-search-modal modal">
-    <div 
-      onClick={() => props.isShowSearchModal(false)}
-      className="background">
-    </div>
-    <div className="contents">
-      <div className="search-area">
-        <p className="text-area">
-        Millions of movies, TV shows and people to discover. Explore now.
-        </p>
-        <div className="input-area">
-          <input 
-            type="text" 
-            placeholder="Search by movies, TV shows, people, and more."
-            onChange={(e) => setSearchKeyword(e.target.value)}
-            onKeyPress={handleOnKeyPress}
-          />
-          <FontAwesomeIcon 
-            onClick={onSearchKeyword}
-            icon={faMagnifyingGlass} className="search-icon"/>
+    <Wrapper className="main-search-modal modal">
+      <div 
+        onClick={() => props.isShowSearchModal(false)}
+        className="background">
+      </div>
+      <div className="contents">
+        <div className="search-area">
+          <p className="text-area">
+          Millions of movies, TV shows and people to discover. Explore now.
+          </p>
+          <div className="input-area">
+            <input 
+              type="text" 
+              placeholder="Search by movies, TV shows, people, and more."
+              onChange={(e) => setSearchKeyword(e.target.value)}
+              onKeyPress={handleOnKeyPress}
+            />
+            <FontAwesomeIcon 
+              onClick={onSearchKeyword}
+              icon={faMagnifyingGlass} className="search-icon"/>
+          </div>
         </div>
       </div>
-    </div>
-    <FontAwesomeIcon 
-     onClick={() => props.isShowSearchModal(false)}
-    icon={faCircleXmark} className="close-icon"/>
-    </div>
+      <FontAwesomeIcon 
+      onClick={() => props.isShowSearchModal(false)}
+      icon={faCircleXmark} className="close-icon"/>
+    </Wrapper>
   )
 }
 

@@ -19,7 +19,7 @@
       }
       .overview{
         @include body02;
-        @include text-wrap-ellipsis-three;
+        @include text-wrap-ellipsis(3);
         max-width: 600px;
         text-shadow: 1px 1px 3px #292929;
       }
