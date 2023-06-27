@@ -2,13 +2,11 @@ import api from '../../Api'
 import {useState, useEffect} from 'react';
 
 const VideoModal = (props) => {
-  console.log('1', props.movieId);
   const [loading, setLoading] = useState(true);
   const [videoList, setVideoList] = useState({});
 
   const getVideoList = async() => {
     const { data } = await api.get(`movie/${props.movieId}/videos`);
-    console.log('2', props.movieId);
     if(data){
       const setTrailer = data.results.filter(el => (
         el.name === 'Official Trailer'

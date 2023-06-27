@@ -7,7 +7,7 @@ import BasicList from '../components/BasicList'
 
 const SearchPage = ( props ) => {
   // const { param } = useParams();
-  console.log(props.searchKeyword);
+  // console.log(props.searchKeyword);
 
   const [loading, setLoading] = useState(true);
 
@@ -22,7 +22,6 @@ const SearchPage = ( props ) => {
     const { data } = await api.get('search/multi', {params:{ query: props.searchKeyword} });
    
     if(data){
-      console.log(data);
       setSearchResultsTotal(data.results)
       setTotalResults(data.total_results)
       setSearchResultsMovie(data.results.filter(el => el.media_type === 'movie'));

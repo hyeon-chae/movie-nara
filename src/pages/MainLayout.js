@@ -18,7 +18,10 @@ const MainLayout = () => {
   }
 
   const [searchKeyword, setSearchKeyword] = useState('');
-  console.log('1', searchKeyword);
+  
+  const handleSearchKeyword = (val) => {
+    setSearchKeyword(val);
+  }
 
   const noScroll = () => {
     showSearchModal ? 
@@ -46,11 +49,10 @@ const MainLayout = () => {
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
         {showSearchModal ? ( 
-        <MainSearchModal
-          isShowSearchModal={isShowSearchModal}
-          setSearchKeyword={setSearchKeyword}
-          searchKeyword={searchKeyword}
-        ></MainSearchModal>) : ''}
+          <MainSearchModal
+            isShowSearchModal={isShowSearchModal}
+            handleSearchKeyword={handleSearchKeyword}
+         ></MainSearchModal>) : ''}
       </Router>
      
     </div>
