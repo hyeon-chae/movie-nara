@@ -2,7 +2,22 @@
 import api from '../Api'
 import { useState, useEffect } from 'react';
 import BasicList from '../components/BasicList'
+import { styled } from 'styled-components'
+import { mixins } from 'style/mixin';
 
+const Wrapper = styled.div`
+    padding-top: 70px;
+  .search-result{
+    padding: 30px 50px 10px;
+    ${mixins.body02()}
+    .keyword{
+      ${mixins.title04()}
+    }
+    .total-results{
+      ${mixins.subTitle()}
+    }
+  }
+`
 
 const SearchPage = ( props ) => {
   const [loading, setLoading] = useState(true);
@@ -30,7 +45,7 @@ const SearchPage = ( props ) => {
   }, [])
 
   return (
-   <div className="search-page">
+   <Wrapper className="search-page">
     <div className="search-result">
     A total of <span className='total-results'>{totalResults}</span> results for your <span className="keyword"> " {props.searchKeyword} " </span> search
     </div>
@@ -70,7 +85,7 @@ const SearchPage = ( props ) => {
             ></BasicList>
           )}
         </div>)}
-    </div>
+    </Wrapper>
   )
 }
 

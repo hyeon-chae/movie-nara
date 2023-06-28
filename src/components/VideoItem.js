@@ -1,7 +1,44 @@
-import {useState, useEffect} from 'react';
+import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { styled } from 'styled-components'
+import { mixins } from 'style/mixin';
 
+const Wrapper = styled.div`
+    transition: 0.4s;
+  .video-area{
+    position:relative;
+    .backgound{
+      background: #00000054;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      border-radius: 8px;
+    }
+    img{
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+    .fa-play{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 32px;
+    }
+  }
+  .info-area{
+    margin-top:10px;
+    ${mixins.body02()}
+    .title{
+      text-align: center;
+    }
+  }
+  &:hover{
+    transform: translateY(-15px);
+  }
+`
 
 const VideoItem = (props) => {
   const IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original/"
@@ -11,7 +48,7 @@ const VideoItem = (props) => {
   }, [])
   
   return (
-   <div 
+   <Wrapper 
     className="video-item"
    >
     <div className="video-area">
@@ -25,7 +62,7 @@ const VideoItem = (props) => {
 
     
 
-   </div>
+   </Wrapper>
   )
 }
 

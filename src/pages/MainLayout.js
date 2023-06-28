@@ -9,6 +9,23 @@ import User from './User'
 import DetailPage from './DetailPage'
 import SearchPage from './SearchPage'
 import MainSearchModal from '../components/modal/MainSearchModal';
+import { styled } from 'styled-components'
+import { mixins } from 'style/mixin';
+
+const Wrapper = styled.div`
+  position: relative;
+  background: #000;
+  .center{
+    ${mixins.title03()}
+    color: #999;
+    padding: 200px 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 200px;
+    height: calc(100vh - 100px);
+    text-align: center;
+  }
+`
 
 const MainLayout = () => {
   const [showSearchModal, setShowSearchModal] = useState(false)
@@ -32,7 +49,7 @@ const MainLayout = () => {
   })
 
   return (
-    <div className='main-layout'>
+    <Wrapper className='main-layout'>
       <Router>
         <NavBar  
           showSearchModal={showSearchModal} 
@@ -54,7 +71,7 @@ const MainLayout = () => {
          ></MainSearchModal>) : ''}
       </Router>
      
-    </div>
+    </Wrapper>
   )
 }
 

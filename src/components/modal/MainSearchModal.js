@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { styled } from 'styled-components'
-import { mixins } from '../../style/mixin';
+import { mixins } from 'style/mixin';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
     height: 35%;
   }
   .text-area{
-    /* @include subTitle; */
+    ${mixins.subTitle()}
     padding: 15px 10px;
   }
   .search-area{
@@ -42,7 +42,7 @@ const Wrapper = styled.div`
       width: calc(100% - 50px);
       background:none;
       border: none;
-      /* @include body04; */
+       ${mixins.body04()}
     }
   }
   .close-icon{
