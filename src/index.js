@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StyleSheetManager } from 'styled-components';
-import './style/index.scss';
+import './style/common.scss';
 
 
 // Import Swiper styles
