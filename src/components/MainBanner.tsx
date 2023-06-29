@@ -4,6 +4,20 @@ import { Link } from 'react-router-dom'
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
 
+interface IPropsMainBanner {
+  trandingAll?: string[],
+}
+
+// interface ItemType {
+//   id: number;
+//   media_type: string;
+//   backdrop_path: string;
+//   original_title: string;
+//   original_name: string;
+//   overview: string;
+// }
+
+  
 const Wrapper = styled.div`
   width: 100%;
   .mainSwiper{
@@ -44,7 +58,7 @@ const Wrapper = styled.div`
 }
 `
 
-const MainBanner = ({trandingAll}) => {
+const MainBanner = ({trandingAll}: IPropsMainBanner) => {
   const IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original/"
 
   return (
@@ -62,13 +76,13 @@ const MainBanner = ({trandingAll}) => {
       >
         {/* <SwiperSlide></SwiperSlide> */}
         
-        {trandingAll.slice(0, 6).map((item) => (
-          <SwiperSlide key={item.id}>
-            <Link to={`/detail/${item.media_type}/${item.id}`}>
-              <img src={IMAGE_BASE_URL+item.backdrop_path} alt="backdrop_path" />
+        {(trandingAll)?.slice(0, 6).map((item: any) => (
+          <SwiperSlide key={item?.id}>
+            <Link to={`/detail/${item?.media_type}/${item?.id}`}>
+              <img src={IMAGE_BASE_URL+item?.backdrop_path} alt="backdrop_path" />
               <div className="info">
-                <p className="title">{item.original_title || item.original_name}</p>
-                <p className='overview'>{item.overview}</p>
+                <p className="title">{item?.original_title || item?.original_name}</p>
+                <p className='overview'>{item?.overview}</p>
               </div>
               <div className="bottom-style"></div>
             </Link>

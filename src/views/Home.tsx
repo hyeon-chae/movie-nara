@@ -1,26 +1,26 @@
 import api from '../Api'
-import {useState, useEffect} from 'react';
+import {useState, useEffect, FC} from 'react';
 
 import MainBanner from 'components/MainBanner'
 import BasicList from 'components/BasicList'
 import VideoList from 'components/VideoList'
 import VideoModal from 'components/modal/VideoModal';
 
-const Home = () => {
+const Home: FC = () => {
         const [loading, setLoading] = useState(true);
         // main banner
-        const [trandingAll, setTrandingAll] =  useState([]);
-        const [popularList, setPopularList] = useState([]);
-        const [onTheAirList, setOnTheAirList] = useState([]);
-        const [upcomingList, setUpcomingList] = useState([]);
-        const [topRatedList, setTopRatedList] = useState([]);
-        const [movieId, setMovieId] = useState('');
+        const [trandingAll, setTrandingAll] =  useState<[] | undefined>([]);
+        const [popularList, setPopularList] = useState<[] | undefined>([]);
+        const [onTheAirList, setOnTheAirList] = useState<[] | undefined>([]);
+        const [upcomingList, setUpcomingList] = useState<[] | undefined>([]);
+        const [topRatedList, setTopRatedList] = useState<[] | undefined>([]);
+        const [movieId, setMovieId] = useState<number | undefined>(undefined);
 
-        const [showVideoModal, setShowVideoModal] = useState(false);
+        const [showVideoModal, setShowVideoModal] = useState<boolean>(false);
 
         const [tabMenu, setTabMenu] = useState('movie');
 
-        const isShowModal = (boolean, id) => {
+        const isShowModal = (boolean: boolean, id:number) => {
                 setShowVideoModal(boolean);
                 setMovieId(id);
                 // console.log(boolean, id);
@@ -33,7 +33,7 @@ const Home = () => {
                 }
         }
 
-        const getPopularList = async (val) => {
+        const getPopularList = async (val:string) => {
                 // const response = await fetch (`https://api.themoviedb.org/3/movie/popular?api_key=f4a0fec2ffba5a808270c74f9bc8dd59&page=1`)
                 // const json = await response.json();
                 // setMovies(json.results);
@@ -52,7 +52,7 @@ const Home = () => {
                 setLoading(false);
         }
 
-        const getUpcomingList = async (val) => {
+        const getUpcomingList = async (val: string) => {
                 const { data } = await api.get(val + '/upcoming');
                 if(data){
                         setUpcomingList(data.results);
@@ -60,7 +60,7 @@ const Home = () => {
                 setLoading(false);
         }
 
-        const getTopRatedList = async (val) => {
+        const getTopRatedList = async (val: string) => {
                 const { data } = await api.get(val + '/top_rated');
                 if(data){
                         setTopRatedList(data.results);
@@ -68,7 +68,7 @@ const Home = () => {
                 setLoading(false);
         }
 
-        const getTabMenu = (title, val) => {
+        const getTabMenu = (title: string, val: string) => {
                 setTabMenu(val);
                 if(title === `What's Popular`){
                         getPopularList(val);

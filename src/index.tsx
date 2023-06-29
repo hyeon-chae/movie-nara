@@ -19,7 +19,7 @@ import 'swiper/css/scrollbar';
 // SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 // Swiper.use([Swiper, SwiperSlide]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <StyleSheetManager shouldForwardProp={(prop) => prop !== 'theme'}>

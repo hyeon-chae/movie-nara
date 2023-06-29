@@ -2,6 +2,20 @@ import { Link } from 'react-router-dom'
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
 
+interface IPropsBasicItem { 
+  item: {
+    id: number;
+    name: string;
+    overview: string;
+    title: string;
+    poster_path: string;
+  },
+  idx: number;
+  label?: boolean;
+  currentTab: number;
+  tabMenu?: string;
+}
+
 const Wrapper = styled.div`
   .basic-item{
   ${mixins.flexBox({direction:'column', align: 'start', justify: 'start' })}
@@ -75,28 +89,34 @@ const Wrapper = styled.div`
 }
 `
 
-const BasicItem = ({item, inx, label, currentTab, tabMenu}) => {
+const BasicItem = ({
+  item,
+  idx,
+  label,
+  currentTab,
+  tabMenu
+}: IPropsBasicItem) => {
   const IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original/"
   const param = (currentTab  === 0 && tabMenu === 'movie') ? 'movie' : 'tv';
 
   return (
-    <Wrapper key={item.id}>
-      <Link to={`/detail/${param}/${item.id}`} 
+    <Wrapper key={item?.id}>
+      <Link to={`/detail/${param}/${item?.id}`} 
       className={label ? 'basic-item popular' : 'basic-item normal'}
       >
         <div className="img-area">
           {label ? (
-            <p className="num">{inx+1}</p>
+            <p className="num">{idx+1}</p>
             ) : 
             (<div className="hover-detail">
-            <p className="title">{item.name}</p>
-            <p className="overview">{ item.overview }</p>
+            <p className="title">{item?.name}</p>
+            <p className="overview">{ item?.overview }</p>
           </div>)
           }
-          <img src={IMAGE_BASE_URL+item.poster_path} alt="iamge" />
+          <img src={IMAGE_BASE_URL+item?.poster_path} alt="iamge" />
         </div>
         <div className="info-area"> 
-          <p className="title-area">{item.title || item.name}</p>
+          <p className="title-area">{item?.title || item?.name}</p>
         </div>
       </Link>
     </Wrapper>

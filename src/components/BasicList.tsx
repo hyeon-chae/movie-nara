@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Scrollbar, A11y} from 'swiper';
 import PropTypes from 'prop-types'
@@ -7,6 +7,14 @@ import { mixins } from 'style/mixin';
 
 import BasicItem from './BasicItem'
 
+interface IPropsBasicList {
+  list?: [];
+  activeTabMenu: boolean;
+  tabMenu?: string | undefined;
+  getTabMenu?: (title: string, val: string) => void ;
+  listTitle: string;
+  label?: boolean;
+}
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -48,27 +56,30 @@ const Wrapper = styled.div`
   }
 `
 
-const BasicList = (props) => {
+const BasicList = ({
+  list,
+  activeTabMenu,
+  tabMenu,
+  getTabMenu,
+  listTitle, 
+  label
+}: IPropsBasicList) => {
   const [currentTab, setCurrentTab] = useState(0);
   const tabMenuList = [
     {menu:'Movie', value: 'movie'}, 
     {menu:'TV Shows', value: 'tv'}
   ]
 
-  const selectMenuHandler = (val, index) => {
+  const selectMenuHandler = (val: string, index: number) => {
     setCurrentTab(index);
-    props.getTabMenu(props.listTitle, val)
+    getTabMenu?.(listTitle, val)
   };
-  
-  useEffect(() => { 
-
-  }, [])
 
   return (
     <Wrapper className="basic-list">
       <div className="list-title-area">
-        <p className="list-title">{ props.listTitle }</p>
-        {props.activeTabMenu ? (
+        <p className="list-title">{ listTitle }</p>
+        {activeTabMenu ? (
         <ul className="tab-menu-area">
           {tabMenuList?.map((item, i) =>(
             <li 
@@ -91,14 +102,14 @@ const BasicList = (props) => {
         hide: true,
       }}
       >
-      {props.list.map((item, inx) => (
+      {list?.map((item: any, idx: number) => (
         <SwiperSlide key={item.id}>
           <BasicItem 
             item={item} 
-            inx={inx} 
-            tabMenu={props.tabMenu}
+            idx={idx} 
+            tabMenu={tabMenu}
             currentTab={currentTab}
-            label={props.label}
+            label={label}
             />
         </SwiperSlide>
       ))}

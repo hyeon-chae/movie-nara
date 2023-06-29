@@ -1,10 +1,17 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Scrollbar, A11y} from 'swiper';
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
 
 import VideoItem from './VideoItem';
+interface IPropsMovieList {
+  list?: [];
+  activeTabMenu: boolean;
+  getTabMenu?: (title: string, val: string) => void ;
+  listTitle: string;
+  isShowModal: (boolean: boolean, id:number) => void;
+}
 
 const Wrapper = styled.div`
   background: #343434;
@@ -48,26 +55,30 @@ const Wrapper = styled.div`
   }
 `
 
-const MovieList = (props) => {
+const MovieList = ({
+  list,
+  activeTabMenu,
+  getTabMenu,
+  listTitle, 
+  isShowModal
+}: IPropsMovieList) => {
   const [currentTab, setCurrentTab] = useState(0);
   const tabMenuList = [
     {menu:'Movie', value: 'movie'}, 
     {menu:'TV Shows', value: 'tv'}
   ]
   
-  const selectMenuHandler = (str, val, index) => {
+  const selectMenuHandler = (str: string, val: string, index: number) => {
     setCurrentTab(index);
-    props.getTabMenu(str, val)
+    getTabMenu?.(str, val)
   };
 
-  useEffect(() => { 
-  }, [])
 
   return (
    <Wrapper className="video-list">
      <div className="list-title-area">
-    <p className="list-title">{ props.listTitle }</p>
-    {props.activeTabMenu ? (
+    <p className="list-title">{ listTitle }</p>
+    {activeTabMenu ? (
         <ul className="tab-menu-area">
           {tabMenuList.map((item, i) =>(
             <li 
@@ -90,18 +101,13 @@ const MovieList = (props) => {
         hide: true,
       }}
       >
-      {props.list.slice(0, 10).map((item, inx) => (
+      {list?.slice(0, 10).map((item: any) => (
         <SwiperSlide 
-          onClick={() => props.isShowModal(true, item.id)}
+          onClick={() => isShowModal(true, item.id)}
           key={item.id}
         >
           <VideoItem 
             item={item} 
-            inx={inx} 
-            tabMenu={props.tabMenu}
-            currentTab={currentTab}
-            label={props.label}
-           
             />
         </SwiperSlide>
       ))}

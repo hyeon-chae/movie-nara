@@ -6,6 +6,11 @@ import { faUser, faMagnifyingGlass, faX } from "@fortawesome/free-solid-svg-icon
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
 
+interface IPropsNavBar {
+        showSearchModal: boolean,
+        isShowSearchModal: (val: boolean) => void,
+}
+
 const Wrapper = styled.div`
         background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
         padding: 22px 50px;
@@ -42,10 +47,10 @@ const Wrapper = styled.div`
         }
 `
 
-const NavBar = (props) => {
+const NavBar = ({showSearchModal, isShowSearchModal }: IPropsNavBar) => {
         return (
                 <Wrapper 
-                        className={props.showSearchModal ? 'nav-area active-search-modal': 'nav-area'}>
+                        className={showSearchModal ? 'nav-area active-search-modal': 'nav-area'}>
                         <div className="menu-warp">
                                 <div className="menu-area">
                                         <Link to='/' className="logo">MOVIE NARA</Link>
@@ -53,15 +58,15 @@ const NavBar = (props) => {
                                         <Link to='/shows'>TV Shows</Link>
                                 </div>
                                 <div className="user-area">
-                                        {!props.showSearchModal ? (
+                                        {!showSearchModal ? (
                                                 <FontAwesomeIcon 
-                                                        onClick={() => props.isShowSearchModal(true)}
+                                                        onClick={() => isShowSearchModal(true)}
                                                         icon={faMagnifyingGlass} 
                                                         className="icon"
                                                 />
                                         ):(
                                                 <FontAwesomeIcon 
-                                                        onClick={() => props.isShowSearchModal(false)} 
+                                                        onClick={() => isShowSearchModal(false)} 
                                                         icon={faX} 
                                                         className="icon"/>
                                                         

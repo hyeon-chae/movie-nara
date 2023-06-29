@@ -2,6 +2,16 @@ import api from '../../Api'
 import {useState, useEffect} from 'react';
 import { styled } from 'styled-components'
 
+interface IPropsVideoModal {
+  isShowModal: (boolean: boolean, id:number | undefined) => void;
+  movieId: number | undefined;
+}
+
+interface VideoListType {
+  name: string;
+  key: number;
+}
+
 const Wrapper = styled.div`
   position: fixed;
   top: 0;
@@ -26,14 +36,14 @@ const Wrapper = styled.div`
   } 
 `
 
-const VideoModal = (props) => {
-  const [loading, setLoading] = useState(true);
-  const [videoList, setVideoList] = useState({});
+const VideoModal = ({isShowModal, movieId}: IPropsVideoModal) => {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [videoList, setVideoList] = useState<VideoListType[] | any>();
 
   const getVideoList = async() => {
-    const { data } = await api.get(`movie/${props.movieId}/videos`);
+    const { data } = await api.get(`movie/${movieId}/videos`);
     if(data){
-      const setTrailer = data.results.filter(el => (
+      const setTrailer = data.results.filter((el: any) => (
         el.name === 'Official Trailer'
       ))
       setVideoList(setTrailer);
@@ -49,14 +59,14 @@ const VideoModal = (props) => {
 
   return (
    <Wrapper className="video-modal modal">
-      <div className="background" onClick={() => props.isShowModal(false)}></div>
+      <div className="background" onClick={() => isShowModal(false, undefined)}></div>
       {loading ? <strong>Loading...</strong> : (
       <div className="modal-contents">
         {/* {videoList.id} */}
         <iframe 
           className="video-area"
-          src={`https://www.youtube.com/embed/${videoList[0].key}`} 
-          title={videoList[0].name} 
+          src={`https://www.youtube.com/embed/${videoList[0]?.key}`} 
+          title={videoList[0]?.name} 
           frameBorder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowFullScreen>

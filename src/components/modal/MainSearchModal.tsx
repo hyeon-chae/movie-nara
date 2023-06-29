@@ -1,9 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
+
+interface IPropsMainSearchModal {
+  isShowSearchModal: (val: boolean) => void;
+  handleSearchKeyword: (val: string) => void;
+}
 
 const Wrapper = styled.div`
   width: 100%;
@@ -54,22 +59,22 @@ const Wrapper = styled.div`
   }
 `
 
-const MainSearchModal = (props) => {
+const MainSearchModal = ({isShowSearchModal, handleSearchKeyword}: IPropsMainSearchModal) => {
   const navigate = useNavigate();
 
-  const [searchKeyword, setSearchKeyword] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState<string>('');
 
   const onSearchKeyword = () => {
     if(searchKeyword === ''){
       return; 
     }else{
-      props.isShowSearchModal(false)
+      isShowSearchModal(false)
       navigate('/search', { replace: true });
-      props.handleSearchKeyword(searchKeyword);    
+      handleSearchKeyword(searchKeyword);    
     }
     
   }
-  const handleOnKeyPress = (e) => {
+  const handleOnKeyPress = (e: any) => {
      // Enter 입력이 되면 클릭 이벤트 실행
     if (e.key === 'Enter') {
       console.log('enter');
@@ -77,11 +82,10 @@ const MainSearchModal = (props) => {
     }
   };
 
-  useEffect(() => {})
   return (
     <Wrapper className="main-search-modal modal">
       <div 
-        onClick={() => props.isShowSearchModal(false)}
+        onClick={() => isShowSearchModal(false)}
         className="background">
       </div>
       <div className="contents">
@@ -103,7 +107,7 @@ const MainSearchModal = (props) => {
         </div>
       </div>
       <FontAwesomeIcon 
-      onClick={() => props.isShowSearchModal(false)}
+      onClick={() => isShowSearchModal(false)}
       icon={faCircleXmark} className="close-icon"/>
     </Wrapper>
   )

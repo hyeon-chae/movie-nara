@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, FC} from 'react';
 
 import NavBar from 'components/NavBar'
 import Home from './Home'
@@ -27,15 +27,15 @@ const Wrapper = styled.div`
   }
 `
 
-const MainLayout = () => {
-  const [showSearchModal, setShowSearchModal] = useState(false)
-  const [searchKeyword, setSearchKeyword] = useState('');
+const MainLayout: FC = () => {
+  const [showSearchModal, setShowSearchModal] = useState<boolean>(false)
+  const [searchKeyword, setSearchKeyword] = useState<string>('');
 
-  const isShowSearchModal = (boolean) => {
-    setShowSearchModal(boolean)
+  const isShowSearchModal = (val: boolean) => {
+    setShowSearchModal(val)
   }
   
-  const handleSearchKeyword = (val) => {
+  const handleSearchKeyword = (val: string) => {
     setSearchKeyword(val);
   }
 

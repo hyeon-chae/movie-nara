@@ -1,8 +1,15 @@
-import { useEffect } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
+
+interface IPropsVideoItem {
+  item: {
+    backdrop_path: string;
+    original_title: string;
+  },
+}
 
 const Wrapper = styled.div`
     transition: 0.4s;
@@ -40,12 +47,9 @@ const Wrapper = styled.div`
   }
 `
 
-const VideoItem = (props) => {
+const VideoItem = ({item}: IPropsVideoItem) => {
   const IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original/"
 
-  useEffect(() => { 
-
-  }, [])
   
   return (
    <Wrapper 
@@ -53,11 +57,11 @@ const VideoItem = (props) => {
    >
     <div className="video-area">
       <div className="backgound"></div>
-      <img src={IMAGE_BASE_URL+props.item.backdrop_path} alt="backdrop_path" />
+      <img src={IMAGE_BASE_URL+item.backdrop_path} alt="backdrop_path" />
       <FontAwesomeIcon icon={faPlay} />
     </div>
     <div className="info-area">
-      <p className="title">{props.item.original_title}</p>
+      <p className="title">{item.original_title}</p>
     </div>
 
     
