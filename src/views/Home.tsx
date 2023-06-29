@@ -14,13 +14,13 @@ const Home: FC = () => {
         const [onTheAirList, setOnTheAirList] = useState<[] | undefined>([]);
         const [upcomingList, setUpcomingList] = useState<[] | undefined>([]);
         const [topRatedList, setTopRatedList] = useState<[] | undefined>([]);
-        const [movieId, setMovieId] = useState<number | undefined>(undefined);
+        const [movieId, setMovieId] = useState<number | undefined>();
 
         const [showVideoModal, setShowVideoModal] = useState<boolean>(false);
 
         const [tabMenu, setTabMenu] = useState('movie');
 
-        const isShowModal = (boolean: boolean, id:number) => {
+        const isShowModal = (boolean: boolean, id:number | undefined) => {
                 setShowVideoModal(boolean);
                 setMovieId(id);
                 // console.log(boolean, id);
@@ -114,7 +114,6 @@ const Home: FC = () => {
                         <VideoList
                                 list={upcomingList}
                                 activeTabMenu={false}
-                                tabMenu={tabMenu} 
                                 getTabMenu={getTabMenu}
                                 listTitle={'Upcoming | official trailer'}
                                 isShowModal={isShowModal}
