@@ -1,10 +1,10 @@
 import api from '../Api'
 import {useState, useEffect} from 'react';
 
-import MainBanner from '../components/MainBanner'
-import BasicList from '../components/BasicList'
-import VideoList from '../components/VideoList'
-import VideoModal from '../components/modal/VideoModal';
+import MainBanner from 'components/MainBanner'
+import BasicList from 'components/BasicList'
+import VideoList from 'components/VideoList'
+import VideoModal from 'components/modal/VideoModal';
 
 const Home = () => {
         const [loading, setLoading] = useState(true);

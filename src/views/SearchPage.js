@@ -1,7 +1,7 @@
 
 import api from '../Api'
 import { useState, useEffect } from 'react';
-import BasicList from '../components/BasicList'
+import BasicList from 'components/BasicList'
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
 

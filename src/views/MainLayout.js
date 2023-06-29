@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 
-import NavBar from '../components/NavBar'
+import NavBar from 'components/NavBar'
 import Home from './Home'
 import Movies from './Movies'
 import TvShow from './TvShow'
 import User from './User'
 import DetailPage from './DetailPage'
 import SearchPage from './SearchPage'
-import MainSearchModal from '../components/modal/MainSearchModal';
+import MainSearchModal from 'components/modal/MainSearchModal';
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
 

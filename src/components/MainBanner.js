@@ -23,7 +23,7 @@ const Wrapper = styled.div`
         text-shadow: 1px 2px 10px #292929;
       }
       .overview{
-        ${mixins.title03()}
+        ${mixins.body02()}
         ${mixins.textWrapEllips(3)}
         max-width: 600px;
         text-shadow: 1px 1px 3px #292929;
