@@ -70,7 +70,6 @@ const MainLayout: FC = () => {
             handleSearchKeyword={handleSearchKeyword}
          ></MainSearchModal>) : ''}
       </Router>
-     
     </Wrapper>
   )
 }
