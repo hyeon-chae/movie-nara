@@ -8,12 +8,19 @@ import { mixins } from 'style/mixin';
 import BasicItem from './BasicItem'
 
 interface IPropsBasicList {
-  list?: [];
+  list?: BasicItemType[];
   activeTabMenu: boolean;
   tabMenu?: string | undefined;
   getTabMenu?: (title: string, val: string) => void ;
   listTitle: string;
   label?: boolean;
+}
+export interface BasicItemType{
+  id: number;
+  name: string;
+  overview: string;
+  title: string;
+  poster_path: string;
 }
 
 const Wrapper = styled.div`
@@ -102,7 +109,7 @@ const BasicList = ({
         hide: true,
       }}
       >
-      {list?.map((item: any, idx: number) => (
+      {list?.map((item: BasicItemType, idx: number) => (
         <SwiperSlide key={item.id}>
           <BasicItem 
             item={item} 

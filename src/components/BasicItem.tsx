@@ -1,15 +1,9 @@
 import { Link } from 'react-router-dom'
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
-
+import { BasicItemType } from 'components/BasicList';
 interface IPropsBasicItem { 
-  item: {
-    id: number;
-    name: string;
-    overview: string;
-    title: string;
-    poster_path: string;
-  },
+  item: BasicItemType,
   idx: number;
   label?: boolean;
   currentTab: number;

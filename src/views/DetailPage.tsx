@@ -11,10 +11,21 @@ interface DetailType {
   original_title: string;
   original_name: string;
   release_date: string;
-  genres: string[];
+  genres: {
+    id: number;
+    name: string;
+  }[];
   tagline: string;
   overview: string;
-  created_by: string[];
+  created_by: {
+    id: number;
+    name: string;
+  }[];
+}
+interface CreditsCastType {
+  id: number;
+  profile_path: string,
+  name: string
 }
 
 const Wrapper = styled.div`
@@ -33,12 +44,9 @@ const Wrapper = styled.div`
       display: block;
     }
     .mian-info-area{
-    ${mixins.flexBox({justify:'flex-start'})}
+    ${mixins.flexBox({justify:'flex-start'})};
+    ${mixins.positionCenter('absolute')};
       padding: 70px 50px 30px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       width: 100%;
       box-sizing: border-box;
       .poster-area{
@@ -114,7 +122,7 @@ const DetailPage = () => {
 
   const [loading, setLoading] = useState<boolean>(true);
   const [detail, setDetail] = useState<DetailType | undefined>();
-  const [creditsCast, setCreditsCast] = useState<string[]>([]);
+  const [creditsCast, setCreditsCast] = useState<CreditsCastType[]>([]);
   const { param, id } = useParams();
 
   const getDetail = async () => {
@@ -158,7 +166,7 @@ const DetailPage = () => {
               {detail?.original_title || detail?.original_name} ({moment(detail?.release_date).format('YYYY')})
             </p>
             <ul className="genres">
-              {detail?.genres?.map((item: any) => (
+              {detail?.genres?.map((item: {id: number, name: string }) => (
                 <li  key={item.id}>{item.name}</li>
               ))}
             </ul>
@@ -166,7 +174,7 @@ const DetailPage = () => {
             <p className="overview">{detail?.overview}</p>
             {detail?.created_by ? (
             <p className="createdby">
-              {detail?.created_by.map((item: any) => (
+              {detail?.created_by.map((item: {id: number, name: string}) => (
                 <span key={item.id}>{ item.name }, </span>
               ))}
             </p>
@@ -180,7 +188,7 @@ const DetailPage = () => {
       <div className="credits-area">
         <div className="cast-title">Cast</div>
         <ul className="cast-area">
-          {creditsCast?.slice(0, 10).map((item: any) => (
+          {creditsCast?.slice(0, 10).map((item: CreditsCastType) => (
             <li 
             className="cast-item"
             key={item.id}>

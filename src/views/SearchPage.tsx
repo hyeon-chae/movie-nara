@@ -38,9 +38,9 @@ const SearchPage = ({searchKeyword}: IPropsSearchPage) => {
     if(data){
       setSearchResultsTotal(data.results)
       setTotalResults(data.total_results)
-      setSearchResultsMovie(data.results.filter((el: any) => el?.media_type === 'movie'));
-      setSearchResultsTv(data.results.filter((el: any) => el?.media_type === 'tv'));
-      setSearchResultsPerson(data.results.filter((el: any) => el?.media_type === 'person'));
+      setSearchResultsMovie(data.results.filter((el: {media_type: string}) => el?.media_type === 'movie'));
+      setSearchResultsTv(data.results.filter((el: {media_type: string}) => el?.media_type === 'tv'));
+      setSearchResultsPerson(data.results.filter((el: {media_type: string}) => el?.media_type === 'person'));
       setLoading(false);
     }
   }

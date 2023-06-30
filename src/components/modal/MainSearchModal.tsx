@@ -74,7 +74,7 @@ const MainSearchModal = ({isShowSearchModal, handleSearchKeyword}: IPropsMainSea
     }
     
   }
-  const handleOnKeyPress = (e: any) => {
+  const handleOnKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
      // Enter 입력이 되면 클릭 이벤트 실행
     if (e.key === 'Enter') {
       console.log('enter');
@@ -98,7 +98,7 @@ const MainSearchModal = ({isShowSearchModal, handleSearchKeyword}: IPropsMainSea
               type="text" 
               placeholder="Search by movies, TV shows, people, and more."
               onChange={(e) => setSearchKeyword(e.target.value)}
-              onKeyPress={handleOnKeyPress}
+              onKeyUp={handleOnKeyPress}
             />
             <FontAwesomeIcon 
               onClick={onSearchKeyword}

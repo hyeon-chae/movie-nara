@@ -3,13 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
-
-interface IPropsVideoItem {
-  item: {
-    backdrop_path: string;
-    original_title: string;
-  },
-}
+import { ItemType } from 'components/VideoList'
 
 const Wrapper = styled.div`
     transition: 0.4s;
@@ -47,7 +41,7 @@ const Wrapper = styled.div`
   }
 `
 
-const VideoItem = ({item}: IPropsVideoItem) => {
+const VideoItem = ({ item }: { item: ItemType }) => {
   const IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original/"
 
   

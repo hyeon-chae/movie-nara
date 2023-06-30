@@ -13,6 +13,12 @@ interface IPropsMovieList {
   isShowModal: (boolean: boolean, id:number) => void;
 }
 
+export interface ItemType {
+  id: number;
+  backdrop_path: string;
+  original_title: string;
+}
+
 const Wrapper = styled.div`
   background: #343434;
   margin: 30px 0;
@@ -101,7 +107,7 @@ const MovieList = ({
         hide: true,
       }}
       >
-      {list?.slice(0, 10).map((item: any) => (
+      {list?.slice(0, 10).map((item: ItemType) => (
         <SwiperSlide 
           onClick={() => isShowModal(true, item.id)}
           key={item.id}

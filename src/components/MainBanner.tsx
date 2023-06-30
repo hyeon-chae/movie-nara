@@ -5,17 +5,17 @@ import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
 
 interface IPropsMainBanner {
-  trandingAll?: string[],
+  trandingAll?: TrandingAllType[],
 }
 
-// interface ItemType {
-//   id: number;
-//   media_type: string;
-//   backdrop_path: string;
-//   original_title: string;
-//   original_name: string;
-//   overview: string;
-// }
+interface TrandingAllType {
+  id: number;
+  media_type: string;
+  backdrop_path: string;
+  original_title: string;
+  original_name: string;
+  overview: string;
+}
 
   
 const Wrapper = styled.div`
@@ -76,7 +76,7 @@ const MainBanner = ({trandingAll}: IPropsMainBanner) => {
       >
         {/* <SwiperSlide></SwiperSlide> */}
         
-        {(trandingAll)?.slice(0, 6).map((item: any) => (
+        {(trandingAll)?.slice(0, 6).map((item: TrandingAllType) => (
           <SwiperSlide key={item?.id}>
             <Link to={`/detail/${item?.media_type}/${item?.id}`}>
               <img src={IMAGE_BASE_URL+item?.backdrop_path} alt="backdrop_path" />

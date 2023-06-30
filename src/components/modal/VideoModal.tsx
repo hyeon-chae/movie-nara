@@ -1,6 +1,8 @@
 import api from '../../Api'
 import {useState, useEffect} from 'react';
 import { styled } from 'styled-components'
+import { mixins } from 'style/mixin';
+
 
 interface IPropsVideoModal {
   isShowModal: (boolean: boolean, id:number | undefined) => void;
@@ -8,6 +10,7 @@ interface IPropsVideoModal {
 }
 
 interface VideoListType {
+  id: number;
   name: string;
   key: number;
 }
@@ -24,10 +27,7 @@ const Wrapper = styled.div`
     height: 100%;
   }
   .modal-contents{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+   ${mixins.positionCenter('absolute')};
     width: calc(100% - 100px);
     .video-area{
       width: 100%;
@@ -38,12 +38,12 @@ const Wrapper = styled.div`
 
 const VideoModal = ({isShowModal, movieId}: IPropsVideoModal) => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [videoList, setVideoList] = useState<VideoListType[] | any>();
+  const [videoList, setVideoList] = useState<VideoListType[]>([]);
 
-  const getVideoList = async() => {
+  const getVideoList = async(): Promise<void> => {
     const { data } = await api.get(`movie/${movieId}/videos`);
     if(data){
-      const setTrailer = data.results.filter((el: any) => (
+      const setTrailer = data?.results?.filter((el: { name: string }) => (
         el.name === 'Official Trailer'
       ))
       setVideoList(setTrailer);
