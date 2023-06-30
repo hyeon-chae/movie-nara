@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-movie/static/css/main.bf394ffb.css",
-    "main.js": "/react-movie/static/js/main.09f26ac5.js",
-    "static/js/787.6711493f.chunk.js": "/react-movie/static/js/787.6711493f.chunk.js",
-    "index.html": "/react-movie/index.html",
-    "main.bf394ffb.css.map": "/react-movie/static/css/main.bf394ffb.css.map",
-    "main.09f26ac5.js.map": "/react-movie/static/js/main.09f26ac5.js.map",
-    "787.6711493f.chunk.js.map": "/react-movie/static/js/787.6711493f.chunk.js.map"
+    "main.css": "/movie-nara/static/css/main.bf394ffb.css",
+    "main.js": "/movie-nara/static/js/main.1b72222d.js",
+    "static/js/787.dd169a0d.chunk.js": "/movie-nara/static/js/787.dd169a0d.chunk.js",
+    "index.html": "/movie-nara/index.html",
+    "main.bf394ffb.css.map": "/movie-nara/static/css/main.bf394ffb.css.map",
+    "main.1b72222d.js.map": "/movie-nara/static/js/main.1b72222d.js.map",
+    "787.dd169a0d.chunk.js.map": "/movie-nara/static/js/787.dd169a0d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bf394ffb.css",
-    "static/js/main.09f26ac5.js"
+    "static/js/main.1b72222d.js"
   ]
 }
