@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `
 
 const Footer: FC = () => {
-  const updated = '2022-10-11'
+  const updated = '2023-06-30'
   return (
    <Wrapper className="footer-area">
     Copyright CHAE HYEON all rights reserved. Last Updated {moment(updated).format('YYYY.MM.DD')}
