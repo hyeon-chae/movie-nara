@@ -5,6 +5,29 @@ import moment from 'moment';
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
 
+interface DetailType {
+  backdrop_path: string;
+  poster_path: string;
+  original_title: string;
+  original_name: string;
+  release_date: string;
+  genres: {
+    id: number;
+    name: string;
+  }[];
+  tagline: string;
+  overview: string;
+  created_by: {
+    id: number;
+    name: string;
+  }[];
+}
+interface CreditsCastType {
+  id: number;
+  profile_path: string,
+  name: string
+}
+
 const Wrapper = styled.div`
   .main-img-area{
     position: relative;
@@ -21,12 +44,9 @@ const Wrapper = styled.div`
       display: block;
     }
     .mian-info-area{
-    ${mixins.flexBox({justify:'flex-start'})}
+    ${mixins.flexBox({justify:'flex-start'})};
+    ${mixins.positionCenter('absolute')};
       padding: 70px 50px 30px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       width: 100%;
       box-sizing: border-box;
       .poster-area{
@@ -100,9 +120,9 @@ const Wrapper = styled.div`
 const DetailPage = () => {
   const IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original/"
 
-  const [loading, setLoading] = useState(true);
-  const [detail, setDetail] = useState({});
-  const [creditsCast, setCreditsCast] = useState([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [detail, setDetail] = useState<DetailType | undefined>();
+  const [creditsCast, setCreditsCast] = useState<CreditsCastType[]>([]);
   const { param, id } = useParams();
 
   const getDetail = async () => {
@@ -134,27 +154,27 @@ const DetailPage = () => {
         <div className="background" />
         <img 
           className="detail-main-img"
-          src={IMAGE_BASE_URL+detail.backdrop_path} 
+          src={IMAGE_BASE_URL+detail?.backdrop_path} 
           alt="detail-main-img" 
         />
         <div className="mian-info-area">
           <div className="poster-area">
-            <img src={IMAGE_BASE_URL+detail.poster_path}  alt="poster" />
+            <img src={IMAGE_BASE_URL+detail?.poster_path}  alt="poster" />
           </div>
           <div className="info-area">
             <p className="info-title">
-              {detail.original_title || detail.original_name} ({moment(detail.release_date).format('YYYY')})
+              {detail?.original_title || detail?.original_name} ({moment(detail?.release_date).format('YYYY')})
             </p>
             <ul className="genres">
-              {detail.genres?.map((item) => (
+              {detail?.genres?.map((item: {id: number, name: string }) => (
                 <li  key={item.id}>{item.name}</li>
               ))}
             </ul>
-            <p className="tagline">{detail.tagline}</p>
-            <p className="overview">{detail.overview}</p>
-            {detail.created_by ? (
+            <p className="tagline">{detail?.tagline}</p>
+            <p className="overview">{detail?.overview}</p>
+            {detail?.created_by ? (
             <p className="createdby">
-              {detail.created_by.map((item) => (
+              {detail?.created_by.map((item: {id: number, name: string}) => (
                 <span key={item.id}>{ item.name }, </span>
               ))}
             </p>
@@ -168,7 +188,7 @@ const DetailPage = () => {
       <div className="credits-area">
         <div className="cast-title">Cast</div>
         <ul className="cast-area">
-          {creditsCast?.slice(0, 10).map((item) => (
+          {creditsCast?.slice(0, 10).map((item: CreditsCastType) => (
             <li 
             className="cast-item"
             key={item.id}>

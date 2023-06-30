@@ -5,6 +5,10 @@ import BasicList from 'components/BasicList'
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
 
+interface IPropsSearchPage { 
+  searchKeyword: string;
+}
+
 const Wrapper = styled.div`
     padding-top: 70px;
   .search-result{
@@ -19,24 +23,24 @@ const Wrapper = styled.div`
   }
 `
 
-const SearchPage = ( props ) => {
+const SearchPage = ({searchKeyword}: IPropsSearchPage) => {
   const [loading, setLoading] = useState(true);
 
-  const [searchResultsTotal, setSearchResultsTotal] = useState([])
-  const [searchResultsMovie, setSearchResultsMovie] = useState([])
-  const [searchResultsTv, setSearchResultsTv] = useState([])
-  const [searchResultsPerson, setSearchResultsPerson] = useState([])
-  const [totalResults, setTotalResults] = useState([])
+  const [searchResultsTotal, setSearchResultsTotal] = useState<[] | undefined>([])
+  const [searchResultsMovie, setSearchResultsMovie] = useState<[] | undefined>([])
+  const [searchResultsTv, setSearchResultsTv] = useState<[] | undefined>([])
+  const [searchResultsPerson, setSearchResultsPerson] = useState<[] | undefined>([])
+  const [totalResults, setTotalResults] = useState<number | undefined>(undefined)
 
 
   const search = async () => {
-    const { data } = await api.get('search/multi', {params:{ query: props.searchKeyword} });
+    const { data } = await api.get('search/multi', {params:{ query: searchKeyword} });
     if(data){
       setSearchResultsTotal(data.results)
       setTotalResults(data.total_results)
-      setSearchResultsMovie(data.results.filter(el => el.media_type === 'movie'));
-      setSearchResultsTv(data.results.filter(el => el.media_type === 'tv'));
-      setSearchResultsPerson(data.results.filter(el => el.media_type === 'person'));
+      setSearchResultsMovie(data.results.filter((el: {media_type: string}) => el?.media_type === 'movie'));
+      setSearchResultsTv(data.results.filter((el: {media_type: string}) => el?.media_type === 'tv'));
+      setSearchResultsPerson(data.results.filter((el: {media_type: string}) => el?.media_type === 'person'));
       setLoading(false);
     }
   }
@@ -47,7 +51,7 @@ const SearchPage = ( props ) => {
   return (
    <Wrapper className="search-page">
     <div className="search-result">
-    A total of <span className='total-results'>{totalResults}</span> results for your <span className="keyword"> " {props.searchKeyword} " </span> search
+    A total of <span className='total-results'>{totalResults}</span> results for your <span className="keyword"> &quot; {searchKeyword} &quot; </span> search
     </div>
       {totalResults === 0 ?
         (<div className='serch-body'>일치하는 컨텐츠가 없습니다.</div>) :

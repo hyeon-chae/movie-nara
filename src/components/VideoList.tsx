@@ -1,24 +1,38 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Scrollbar, A11y} from 'swiper';
-import PropTypes from 'prop-types'
 import { styled } from 'styled-components'
 import { mixins } from 'style/mixin';
 
-import BasicItem from './BasicItem'
+import VideoItem from './VideoItem';
+interface IPropsMovieList {
+  list?: [];
+  activeTabMenu: boolean;
+  getTabMenu?: (title: string, val: string) => void ;
+  listTitle: string;
+  isShowModal: (boolean: boolean, id:number) => void;
+}
 
+export interface ItemType {
+  id: number;
+  backdrop_path: string;
+  original_title: string;
+}
 
 const Wrapper = styled.div`
+  background: #343434;
+  margin: 30px 0;
+  padding: 20px 0 30px;
   box-sizing: border-box;
   .list-title-area{
     padding: 30px 0 10px 50px;
-    ${mixins.flexBox({justify: 'start' })};
+   ${mixins.flexBox({justify: 'start' })};
     .list-title{
       ${mixins.title04()}
       margin-right: 50px;
     }
     .tab-menu-area{
-      ${mixins.flexBox({justify: 'space-between' })};
+     ${mixins.flexBox({justify: 'space-between' })};
       border: 1px solid #fff;
       border-radius:20px;
       box-sizing:border-box;
@@ -44,36 +58,38 @@ const Wrapper = styled.div`
   }
   .swiper-scrollbar{
     background: #ffffff33 !important;
-    // background: rgb(255 255 255 / 20%) !important;
   }
 `
 
-const BasicList = (props) => {
+const MovieList = ({
+  list,
+  activeTabMenu,
+  getTabMenu,
+  listTitle, 
+  isShowModal
+}: IPropsMovieList) => {
   const [currentTab, setCurrentTab] = useState(0);
   const tabMenuList = [
     {menu:'Movie', value: 'movie'}, 
     {menu:'TV Shows', value: 'tv'}
   ]
-
-  const selectMenuHandler = (val, index) => {
-    setCurrentTab(index);
-    props.getTabMenu(props.listTitle, val)
-  };
   
-  useEffect(() => { 
+  const selectMenuHandler = (str: string, val: string, index: number) => {
+    setCurrentTab(index);
+    getTabMenu?.(str, val)
+  };
 
-  }, [])
 
   return (
-    <Wrapper className="basic-list">
-      <div className="list-title-area">
-        <p className="list-title">{ props.listTitle }</p>
-        {props.activeTabMenu ? (
+   <Wrapper className="video-list">
+     <div className="list-title-area">
+    <p className="list-title">{ listTitle }</p>
+    {activeTabMenu ? (
         <ul className="tab-menu-area">
-          {tabMenuList?.map((item, i) =>(
+          {tabMenuList.map((item, i) =>(
             <li 
               key={i}
-              onClick={() => selectMenuHandler(item.value, i)}
+              onClick={() => selectMenuHandler('video', item.value, i)}
               className={ currentTab === i ? 'tab-menu active' : 'tab-menu' }
               >
                 {item.menu}
@@ -82,31 +98,28 @@ const BasicList = (props) => {
         </ul>) : ''
          }
       </div>
-      <Swiper
+    <Swiper
       modules={[Navigation, Scrollbar, A11y]}
-      slidesPerView={6.2}
+      slidesPerView={3.2}
       spaceBetween={10}
-      className="BasicListSwiper"
+      className="videoListSwiper"
       scrollbar={{
         hide: true,
       }}
       >
-      {props.list.map((item, inx) => (
-        <SwiperSlide key={item.id}>
-          <BasicItem 
+      {list?.slice(0, 10).map((item: ItemType) => (
+        <SwiperSlide 
+          onClick={() => isShowModal(true, item.id)}
+          key={item.id}
+        >
+          <VideoItem 
             item={item} 
-            inx={inx} 
-            tabMenu={props.tabMenu}
-            currentTab={currentTab}
-            label={props.label}
             />
         </SwiperSlide>
       ))}
       </Swiper>
-    </Wrapper>
+   </Wrapper>
   )
 }
-BasicList.prototype = {
-  props: PropTypes.object.isRequired,
-}
-export default BasicList;
+
+export default MovieList;

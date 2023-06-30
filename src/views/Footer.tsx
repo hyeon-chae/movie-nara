@@ -1,6 +1,6 @@
 import moment from 'moment';
+import { FC } from 'react';
 import { styled } from 'styled-components'
-
 
 const Wrapper = styled.div`
   padding: 40px 0 50px;
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   background: #000;
 `
 
-const Footer = () => {
+const Footer: FC = () => {
   const updated = '2022-10-11'
   return (
    <Wrapper className="footer-area">
