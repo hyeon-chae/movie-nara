@@ -50,7 +50,7 @@ const MainLayout: FC = () => {
 
   return (
     <Wrapper className='main-layout'>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <NavBar  
           showSearchModal={showSearchModal} 
           isShowSearchModal={isShowSearchModal}
