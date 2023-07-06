@@ -1,10 +1,16 @@
 import api from '../Api'
 import {useState, useEffect, FC} from 'react';
+import { styled } from 'styled-components'
 
 import MainBanner from 'components/MainBanner'
 import BasicList from 'components/BasicList'
 import VideoList from 'components/VideoList'
 import VideoModal from 'components/modal/VideoModal';
+import Loading from 'components/Loading';
+
+const Wrapper = styled.div`
+        min-height: 100vh;
+`
 
 const Home: FC = () => {
         const [loading, setLoading] = useState(true);
@@ -31,6 +37,7 @@ const Home: FC = () => {
                 if(data){
                         setTrandingAll(data.results);
                 }
+                setLoading(false);
         }
 
         const getPopularList = async (val:string) => {
@@ -86,10 +93,9 @@ const Home: FC = () => {
         }, [])
 
         return (
-                <div className="home-area">
-                        <MainBanner trandingAll={trandingAll}></MainBanner>
-
-                        {loading ? <strong>Loading...</strong> : (
+                <Wrapper className="home-area">
+                        {loading ? <Loading height='500px'/> : (<MainBanner trandingAll={trandingAll}></MainBanner>)}
+                        {loading ? <Loading /> : (
                         <BasicList 
                                 list={popularList} 
                                 activeTabMenu={true}
@@ -100,7 +106,7 @@ const Home: FC = () => {
                         ></BasicList>    
                         )}                              
 
-                        {loading ? <strong>Loading...</strong> : (
+                        {loading ? <Loading /> : (
                         <BasicList 
                                 list={onTheAirList} 
                                 activeTabMenu={false}
@@ -110,7 +116,7 @@ const Home: FC = () => {
                         ></BasicList>    
                         )}       
                         
-                        {loading ? <strong>Loading...</strong> : (
+                        {loading ? <Loading /> : (
                         <VideoList
                                 list={upcomingList}
                                 activeTabMenu={false}
@@ -120,7 +126,7 @@ const Home: FC = () => {
                         ></VideoList>                       
                         )}       
 
-                        {loading ? <strong>Loading...</strong> : (
+                        {loading ? <Loading /> : (
                         <BasicList 
                                 list={topRatedList} 
                                 activeTabMenu={true}
@@ -137,7 +143,7 @@ const Home: FC = () => {
                                 movieId={movieId}
                         ></VideoModal>) : ''}        
                         
-                </div>
+                </Wrapper>
         )
 }
 

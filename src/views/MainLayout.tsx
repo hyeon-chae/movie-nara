@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 import {useState, useEffect, FC} from 'react';
 
 import NavBar from 'components/NavBar'
@@ -50,7 +50,8 @@ const MainLayout: FC = () => {
 
   return (
     <Wrapper className='main-layout'>
-      <Router basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      {/* <Router> */}
         <NavBar  
           showSearchModal={showSearchModal} 
           isShowSearchModal={isShowSearchModal}
@@ -69,7 +70,8 @@ const MainLayout: FC = () => {
             isShowSearchModal={isShowSearchModal}
             handleSearchKeyword={handleSearchKeyword}
          ></MainSearchModal>) : ''}
-      </Router>
+        {/* </Router> */}
+        </BrowserRouter>
     </Wrapper>
   )
 }
