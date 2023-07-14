@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/movie-nara/static/css/main.bf394ffb.css",
-    "main.js": "/movie-nara/static/js/main.0e3408d7.js",
+    "main.js": "/movie-nara/static/js/main.d3dd890f.js",
     "static/js/787.dd169a0d.chunk.js": "/movie-nara/static/js/787.dd169a0d.chunk.js",
     "index.html": "/movie-nara/index.html",
     "main.bf394ffb.css.map": "/movie-nara/static/css/main.bf394ffb.css.map",
-    "main.0e3408d7.js.map": "/movie-nara/static/js/main.0e3408d7.js.map",
+    "main.d3dd890f.js.map": "/movie-nara/static/js/main.d3dd890f.js.map",
     "787.dd169a0d.chunk.js.map": "/movie-nara/static/js/787.dd169a0d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bf394ffb.css",
-    "static/js/main.0e3408d7.js"
+    "static/js/main.d3dd890f.js"
   ]
 }
